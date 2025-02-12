@@ -1,0 +1,1039 @@
+Compiling the Fortran compiler identification source file "CMakeFortranCompilerId.F" failed.
+Compiler: /sw/intel/fce/10.1.018/bin/ifort 
+Build flags: 
+Id flags: -v 
+
+The output was:
+127
+Version 10.1 
+/sw/intel/fce/10.1.018/bin/fpp    -D__INTEL_COMPILER=1010 -D_MT -D__ELF__ -D__INTEL_COMPILER_BUILD_DATE=20080801 -D__PTRDIFF_TYPE__=long "-D__SIZE_TYPE__=unsigned long" -D__WCHAR_TYPE__=int "-D__WINT_TYPE__=unsigned int" "-D__INTMAX_TYPE__=long int" "-D__UINTMAX_TYPE__=long unsigned int" -D__unix__ -D__unix -D__linux__ -D__linux -D__gnu_linux__ -Dunix -Dlinux -D__x86_64 -D__x86_64__ -I. -I/sw/intel/fce/10.1.018/include -I/sw/intel/fce/10.1.018/substitute_headers -I/usr/lib/gcc/x86_64-linux-gnu/9/include -I/usr/local/include -I/usr/include -I/usr/lib/gcc/x86_64-linux-gnu/9/include -fixed -4Ycpp -4Ncvf -f_com=yes CMakeFortranCompilerId.F /tmp/ifortm9SQrs.i
+/sw/intel/fce/10.1.018/bin/fortcom    -D__INTEL_COMPILER=1010 -D_MT -D__ELF__ -D__INTEL_COMPILER_BUILD_DATE=20080801 -D__unix__ -D__unix -D__linux__ -D__linux -D__gnu_linux__ -Dunix -Dlinux -D__x86_64 -D__x86_64__ -mGLOB_pack_sort_init_list -I. -I/sw/intel/fce/10.1.018/include -I/sw/intel/fce/10.1.018/substitute_headers -I/usr/lib/gcc/x86_64-linux-gnu/9/include -I/usr/local/include -I/usr/include -I/usr/lib/gcc/x86_64-linux-gnu/9/include "-fp_modspec fp_speculation_FAST" -O2 -mP1OPT_version=1010 -mGLOB_source_language=GLOB_SOURCE_LANGUAGE_F90 -mGLOB_tune_for_fort -mGLOB_use_fort_dope_vector -mP2OPT_static_promotion -mP1OPT_print_version=FALSE -mP3OPT_use_mspp_call_convention -mCG_use_gas_got_workaround=F -mP2OPT_align_option_used=TRUE -mGLOB_options_string=-v -mGLOB_cxx_limited_range=FALSE -mP2OPT_eh_nirvana -mGLOB_diag_file=/tmp/ifortCh6ENq.diag -mGLOB_as_output_backup_file_name=/tmp/ifort6qYiRqas_.s -mGLOB_machine_model=GLOB_MACHINE_MODEL_EFI2 -mGLOB_fp_speculation=GLOB_FP_SPECULATION_FAST -mGLOB_extended_instructions=0x8 -mP2OPT_subs_out_of_bound=FALSE -mGLOB_ansi_alias -mIPOPT_ninl_user_level=2 -mIPOPT_args_in_regs=0 -mPGOPTI_value_profile_use=T -mIPOPT_activate -mIPOPT_lite -mP2OPT_hlo_level=2 -mP2OPT_hlo -mPAROPT_par_report=1 -mCG_emit_as_seg_grouping -mIPOPT_obj_output_file_name=/tmp/ifortCh6ENq.o "-mGLOB_linker_version=(GNU Binutils for Ubuntu) 2.34" -mP3OPT_asm_target=P3OPT_ASM_TARGET_GAS -mGLOB_obj_output_file=/tmp/ifortCh6ENq.o -mGLOB_source_dialect=GLOB_SOURCE_DIALECT_FORTRAN -mP1OPT_source_file_name=CMakeFortranCompilerId.F /tmp/ifortm9SQrs.i
+/sw/intel/fce/10.1.018/bin/fortcom: error while loading shared libraries: libstdc++.so.5: cannot open shared object file: No such file or directory
+ifort: error #10257: Fatal error in /sw/intel/fce/10.1.018/bin/fortcom, terminated by 0x7f
+rm /tmp/ifortVzoTAqlibgcc
+
+rm /tmp/ifortIU1Rvpgnudirs
+
+rm /tmp/ifortm9SQrs.i
+
+rm /tmp/ifortXKuJZparg
+
+rm /tmp/ifortv9GZHtgas
+
+rm /tmp/ifort6qYiRqas_.s
+
+rm /tmp/ifortULXgUpld_v
+
+rm /tmp/iforttOTIhrldashv
+
+rm /tmp/ifortkS9S7qarg
+
+rm /tmp/ifortCh6ENq.o
+
+
+
+Compiling the Fortran compiler identification source file "CMakeFortranCompilerId.F" failed.
+Compiler: /sw/intel/fce/10.1.018/bin/ifort 
+Build flags: 
+Id flags:  
+
+The output was:
+127
+/sw/intel/fce/10.1.018/bin/fortcom: error while loading shared libraries: libstdc++.so.5: cannot open shared object file: No such file or directory
+ifort: error #10257: Fatal error in /sw/intel/fce/10.1.018/bin/fortcom, terminated by 0x7f
+
+
+Compiling the Fortran compiler identification source file "CMakeFortranCompilerId.F" failed.
+Compiler: /sw/intel/fce/10.1.018/bin/ifort 
+Build flags: 
+Id flags: -c 
+
+The output was:
+127
+/sw/intel/fce/10.1.018/bin/fortcom: error while loading shared libraries: libstdc++.so.5: cannot open shared object file: No such file or directory
+ifort: error #10257: Fatal error in /sw/intel/fce/10.1.018/bin/fortcom, terminated by 0x7f
+
+
+Compiling the Fortran compiler identification source file "CMakeFortranCompilerId.F" failed.
+Compiler: /sw/intel/fce/10.1.018/bin/ifort 
+Build flags: 
+Id flags: -fpp 
+
+The output was:
+127
+/sw/intel/fce/10.1.018/bin/fortcom: error while loading shared libraries: libstdc++.so.5: cannot open shared object file: No such file or directory
+ifort: error #10257: Fatal error in /sw/intel/fce/10.1.018/bin/fortcom, terminated by 0x7f
+
+
+Compiling the Fortran compiler identification source file "CMakeFortranCompilerId.F" failed.
+Compiler: /sw/intel/fce/10.1.018/bin/ifort 
+Build flags: 
+Id flags: -v 
+
+The output was:
+127
+Version 10.1 
+/sw/intel/fce/10.1.018/bin/fpp    -D__INTEL_COMPILER=1010 -D_MT -D__ELF__ -D__INTEL_COMPILER_BUILD_DATE=20080801 -D__PTRDIFF_TYPE__=long "-D__SIZE_TYPE__=unsigned long" -D__WCHAR_TYPE__=int "-D__WINT_TYPE__=unsigned int" "-D__INTMAX_TYPE__=long int" "-D__UINTMAX_TYPE__=long unsigned int" -D__unix__ -D__unix -D__linux__ -D__linux -D__gnu_linux__ -Dunix -Dlinux -D__x86_64 -D__x86_64__ -I. -I/sw/intel/fce/10.1.018/include -I/sw/intel/fce/10.1.018/substitute_headers -I/usr/lib/gcc/x86_64-linux-gnu/9/include -I/usr/local/include -I/usr/include -I/usr/lib/gcc/x86_64-linux-gnu/9/include -fixed -4Ycpp -4Ncvf -f_com=yes CMakeFortranCompilerId.F /tmp/iforttxxUM7.i
+/sw/intel/fce/10.1.018/bin/fortcom    -D__INTEL_COMPILER=1010 -D_MT -D__ELF__ -D__INTEL_COMPILER_BUILD_DATE=20080801 -D__unix__ -D__unix -D__linux__ -D__linux -D__gnu_linux__ -Dunix -Dlinux -D__x86_64 -D__x86_64__ -mGLOB_pack_sort_init_list -I. -I/sw/intel/fce/10.1.018/include -I/sw/intel/fce/10.1.018/substitute_headers -I/usr/lib/gcc/x86_64-linux-gnu/9/include -I/usr/local/include -I/usr/include -I/usr/lib/gcc/x86_64-linux-gnu/9/include "-fp_modspec fp_speculation_FAST" -O2 -mP1OPT_version=1010 -mGLOB_source_language=GLOB_SOURCE_LANGUAGE_F90 -mGLOB_tune_for_fort -mGLOB_use_fort_dope_vector -mP2OPT_static_promotion -mP1OPT_print_version=FALSE -mP3OPT_use_mspp_call_convention -mCG_use_gas_got_workaround=F -mP2OPT_align_option_used=TRUE -mGLOB_options_string=-v -mGLOB_cxx_limited_range=FALSE -mP2OPT_eh_nirvana -mGLOB_diag_file=/tmp/ifort2pK7Ma.diag -mGLOB_as_output_backup_file_name=/tmp/ifortakRUG8as_.s -mGLOB_machine_model=GLOB_MACHINE_MODEL_EFI2 -mGLOB_fp_speculation=GLOB_FP_SPECULATION_FAST -mGLOB_extended_instructions=0x8 -mP2OPT_subs_out_of_bound=FALSE -mGLOB_ansi_alias -mIPOPT_ninl_user_level=2 -mIPOPT_args_in_regs=0 -mPGOPTI_value_profile_use=T -mIPOPT_activate -mIPOPT_lite -mP2OPT_hlo_level=2 -mP2OPT_hlo -mPAROPT_par_report=1 -mCG_emit_as_seg_grouping -mIPOPT_obj_output_file_name=/tmp/ifort2pK7Ma.o "-mGLOB_linker_version=(GNU Binutils for Ubuntu) 2.34" -mP3OPT_asm_target=P3OPT_ASM_TARGET_GAS -mGLOB_obj_output_file=/tmp/ifort2pK7Ma.o -mGLOB_source_dialect=GLOB_SOURCE_DIALECT_FORTRAN -mP1OPT_source_file_name=CMakeFortranCompilerId.F /tmp/iforttxxUM7.i
+/sw/intel/fce/10.1.018/bin/fortcom: error while loading shared libraries: libstdc++.so.5: cannot open shared object file: No such file or directory
+ifort: error #10257: Fatal error in /sw/intel/fce/10.1.018/bin/fortcom, terminated by 0x7f
+rm /tmp/iforthmH1y7libgcc
+
+rm /tmp/ifort9Eaks7gnudirs
+
+rm /tmp/iforttxxUM7.i
+
+rm /tmp/ifortkdfcU8arg
+
+rm /tmp/ifortS67lA9gas
+
+rm /tmp/ifortakRUG8as_.s
+
+rm /tmp/ifortRNESaald_v
+
+rm /tmp/ifortxFQ5jaldashv
+
+rm /tmp/ifortGDJck7arg
+
+rm /tmp/ifort2pK7Ma.o
+
+
+
+Compiling the Fortran compiler identification source file "CMakeFortranCompilerId.F" failed.
+Compiler: /sw/intel/fce/10.1.018/bin/ifort 
+Build flags: 
+Id flags:  
+
+The output was:
+127
+/sw/intel/fce/10.1.018/bin/fortcom: error while loading shared libraries: libstdc++.so.5: cannot open shared object file: No such file or directory
+ifort: error #10257: Fatal error in /sw/intel/fce/10.1.018/bin/fortcom, terminated by 0x7f
+
+
+Compiling the Fortran compiler identification source file "CMakeFortranCompilerId.F" failed.
+Compiler: /sw/intel/fce/10.1.018/bin/ifort 
+Build flags: 
+Id flags: -c 
+
+The output was:
+127
+/sw/intel/fce/10.1.018/bin/fortcom: error while loading shared libraries: libstdc++.so.5: cannot open shared object file: No such file or directory
+ifort: error #10257: Fatal error in /sw/intel/fce/10.1.018/bin/fortcom, terminated by 0x7f
+
+
+Compiling the Fortran compiler identification source file "CMakeFortranCompilerId.F" failed.
+Compiler: /sw/intel/fce/10.1.018/bin/ifort 
+Build flags: 
+Id flags: -fpp 
+
+The output was:
+127
+/sw/intel/fce/10.1.018/bin/fortcom: error while loading shared libraries: libstdc++.so.5: cannot open shared object file: No such file or directory
+ifort: error #10257: Fatal error in /sw/intel/fce/10.1.018/bin/fortcom, terminated by 0x7f
+
+
+Checking whether the Fortran compiler is Compaq using "-what" did not match "Compaq Visual Fortran":
+ifort: command line error: no files specified; for help type "ifort -help"
+Checking whether the Fortran compiler is NAG using "-V" did not match "NAG Fortran Compiler":
+Intel(R) Fortran Compiler for applications running on Intel(R) 64, Version 10.1    Build 20080801 Package ID: l_fc_p_10.1.018
+Copyright (C) 1985-2008 Intel Corporation.  All rights reserved.
+
+Checking whether the Fortran compiler is Compaq using "-what" did not match "Compaq Visual Fortran":
+ifort: command line error: no files specified; for help type "ifort -help"
+Checking whether the Fortran compiler is NAG using "-V" did not match "NAG Fortran Compiler":
+Intel(R) Fortran Compiler for applications running on Intel(R) 64, Version 10.1    Build 20080801 Package ID: l_fc_p_10.1.018
+Copyright (C) 1985-2008 Intel Corporation.  All rights reserved.
+
+Detecting Fortran compiler ABI info failed to compile with the following output:
+Change Dir: /compass/Shared/Common/IT/projects/aurora/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_1f222/fast && /usr/bin/make  -f CMakeFiles/cmTC_1f222.dir/build.make CMakeFiles/cmTC_1f222.dir/build
+make[1]: Entering directory '/compass/Shared/Common/IT/projects/aurora/CMakeFiles/CMakeTmp'
+Building Fortran object CMakeFiles/cmTC_1f222.dir/CMakeFortranCompilerABI.F.o
+/sw/intel/fce/10.1.018/bin/ifort    -c /sw/cmake/cmake-3.19.6-Linux-x86_64/share/cmake-3.19/Modules/CMakeFortranCompilerABI.F -o CMakeFiles/cmTC_1f222.dir/CMakeFortranCompilerABI.F.o
+/sw/intel/fce/10.1.018/bin/fortcom: error while loading shared libraries: libstdc++.so.5: cannot open shared object file: No such file or directory
+ifort: error #10257: Fatal error in /sw/intel/fce/10.1.018/bin/fortcom, terminated by 0x7f
+make[1]: *** [CMakeFiles/cmTC_1f222.dir/build.make:85: CMakeFiles/cmTC_1f222.dir/CMakeFortranCompilerABI.F.o] Error 127
+make[1]: Leaving directory '/compass/Shared/Common/IT/projects/aurora/CMakeFiles/CMakeTmp'
+make: *** [Makefile:140: cmTC_1f222/fast] Error 2
+
+
+
+
+Determining if the Fortran compiler works failed with the following output:
+Change Dir: /compass/Shared/Common/IT/projects/aurora/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_c4e7b/fast && /usr/bin/make  -f CMakeFiles/cmTC_c4e7b.dir/build.make CMakeFiles/cmTC_c4e7b.dir/build
+make[1]: Entering directory '/compass/Shared/Common/IT/projects/aurora/CMakeFiles/CMakeTmp'
+Building Fortran object CMakeFiles/cmTC_c4e7b.dir/testFortranCompiler.f.o
+/sw/intel/fce/10.1.018/bin/ifort    -c /compass/Shared/Common/IT/projects/aurora/CMakeFiles/CMakeTmp/testFortranCompiler.f -o CMakeFiles/cmTC_c4e7b.dir/testFortranCompiler.f.o
+/sw/intel/fce/10.1.018/bin/fortcom: error while loading shared libraries: libstdc++.so.5: cannot open shared object file: No such file or directory
+ifort: error #10257: Fatal error in /sw/intel/fce/10.1.018/bin/fortcom, terminated by 0x7f
+make[1]: *** [CMakeFiles/cmTC_c4e7b.dir/build.make:85: CMakeFiles/cmTC_c4e7b.dir/testFortranCompiler.f.o] Error 127
+make[1]: Leaving directory '/compass/Shared/Common/IT/projects/aurora/CMakeFiles/CMakeTmp'
+make: *** [Makefile:140: cmTC_c4e7b/fast] Error 2
+
+
+
+Compiling the Fortran compiler identification source file "CMakeFortranCompilerId.F" failed.
+Compiler: /sw/intel/fce/10.1.018/bin/ifort 
+Build flags: 
+Id flags: -v 
+
+The output was:
+127
+Version 10.1 
+/sw/intel/fce/10.1.018/bin/fpp    -D__INTEL_COMPILER=1010 -D_MT -D__ELF__ -D__INTEL_COMPILER_BUILD_DATE=20080801 -D__PTRDIFF_TYPE__=long "-D__SIZE_TYPE__=unsigned long" -D__WCHAR_TYPE__=int "-D__WINT_TYPE__=unsigned int" "-D__INTMAX_TYPE__=long int" "-D__UINTMAX_TYPE__=long unsigned int" -D__unix__ -D__unix -D__linux__ -D__linux -D__gnu_linux__ -Dunix -Dlinux -D__x86_64 -D__x86_64__ -I. -I/sw/intel/fce/10.1.018/include -I/sw/intel/fce/10.1.018/substitute_headers -I/usr/lib/gcc/x86_64-linux-gnu/9/include -I/usr/local/include -I/usr/include -I/usr/lib/gcc/x86_64-linux-gnu/9/include -fixed -4Ycpp -4Ncvf -f_com=yes CMakeFortranCompilerId.F /tmp/iforttzyZxc.i
+/sw/intel/fce/10.1.018/bin/fortcom    -D__INTEL_COMPILER=1010 -D_MT -D__ELF__ -D__INTEL_COMPILER_BUILD_DATE=20080801 -D__unix__ -D__unix -D__linux__ -D__linux -D__gnu_linux__ -Dunix -Dlinux -D__x86_64 -D__x86_64__ -mGLOB_pack_sort_init_list -I. -I/sw/intel/fce/10.1.018/include -I/sw/intel/fce/10.1.018/substitute_headers -I/usr/lib/gcc/x86_64-linux-gnu/9/include -I/usr/local/include -I/usr/include -I/usr/lib/gcc/x86_64-linux-gnu/9/include "-fp_modspec fp_speculation_FAST" -O2 -mP1OPT_version=1010 -mGLOB_source_language=GLOB_SOURCE_LANGUAGE_F90 -mGLOB_tune_for_fort -mGLOB_use_fort_dope_vector -mP2OPT_static_promotion -mP1OPT_print_version=FALSE -mP3OPT_use_mspp_call_convention -mCG_use_gas_got_workaround=F -mP2OPT_align_option_used=TRUE -mGLOB_options_string=-v -mGLOB_cxx_limited_range=FALSE -mP2OPT_eh_nirvana -mGLOB_diag_file=/tmp/ifortiH6EDc.diag -mGLOB_as_output_backup_file_name=/tmp/ifortISYjZ9as_.s -mGLOB_machine_model=GLOB_MACHINE_MODEL_EFI2 -mGLOB_fp_speculation=GLOB_FP_SPECULATION_FAST -mGLOB_extended_instructions=0x8 -mP2OPT_subs_out_of_bound=FALSE -mGLOB_ansi_alias -mIPOPT_ninl_user_level=2 -mIPOPT_args_in_regs=0 -mPGOPTI_value_profile_use=T -mIPOPT_activate -mIPOPT_lite -mP2OPT_hlo_level=2 -mP2OPT_hlo -mPAROPT_par_report=1 -mCG_emit_as_seg_grouping -mIPOPT_obj_output_file_name=/tmp/ifortiH6EDc.o "-mGLOB_linker_version=(GNU Binutils for Ubuntu) 2.34" -mP3OPT_asm_target=P3OPT_ASM_TARGET_GAS -mGLOB_obj_output_file=/tmp/ifortiH6EDc.o -mGLOB_source_dialect=GLOB_SOURCE_DIALECT_FORTRAN -mP1OPT_source_file_name=CMakeFortranCompilerId.F /tmp/iforttzyZxc.i
+/sw/intel/fce/10.1.018/bin/fortcom: error while loading shared libraries: libstdc++.so.5: cannot open shared object file: No such file or directory
+ifort: error #10257: Fatal error in /sw/intel/fce/10.1.018/bin/fortcom, terminated by 0x7f
+rm /tmp/ifortivJNxalibgcc
+
+rm /tmp/ifortHKwoD9gnudirs
+
+rm /tmp/iforttzyZxc.i
+
+rm /tmp/ifort84lRwcarg
+
+rm /tmp/ifortVppnB9gas
+
+rm /tmp/ifortISYjZ9as_.s
+
+rm /tmp/ifortCivOq8ld_v
+
+rm /tmp/ifortHWzMw9ldashv
+
+rm /tmp/ifortnByhocarg
+
+rm /tmp/ifortiH6EDc.o
+
+
+
+Compiling the Fortran compiler identification source file "CMakeFortranCompilerId.F" failed.
+Compiler: /sw/intel/fce/10.1.018/bin/ifort 
+Build flags: 
+Id flags:  
+
+The output was:
+127
+/sw/intel/fce/10.1.018/bin/fortcom: error while loading shared libraries: libstdc++.so.5: cannot open shared object file: No such file or directory
+ifort: error #10257: Fatal error in /sw/intel/fce/10.1.018/bin/fortcom, terminated by 0x7f
+
+
+Compiling the Fortran compiler identification source file "CMakeFortranCompilerId.F" failed.
+Compiler: /sw/intel/fce/10.1.018/bin/ifort 
+Build flags: 
+Id flags: -c 
+
+The output was:
+127
+/sw/intel/fce/10.1.018/bin/fortcom: error while loading shared libraries: libstdc++.so.5: cannot open shared object file: No such file or directory
+ifort: error #10257: Fatal error in /sw/intel/fce/10.1.018/bin/fortcom, terminated by 0x7f
+
+
+Compiling the Fortran compiler identification source file "CMakeFortranCompilerId.F" failed.
+Compiler: /sw/intel/fce/10.1.018/bin/ifort 
+Build flags: 
+Id flags: -fpp 
+
+The output was:
+127
+/sw/intel/fce/10.1.018/bin/fortcom: error while loading shared libraries: libstdc++.so.5: cannot open shared object file: No such file or directory
+ifort: error #10257: Fatal error in /sw/intel/fce/10.1.018/bin/fortcom, terminated by 0x7f
+
+
+Compiling the Fortran compiler identification source file "CMakeFortranCompilerId.F" failed.
+Compiler: /sw/intel/fce/10.1.018/bin/ifort 
+Build flags: 
+Id flags: -v 
+
+The output was:
+127
+Version 10.1 
+/sw/intel/fce/10.1.018/bin/fpp    -D__INTEL_COMPILER=1010 -D_MT -D__ELF__ -D__INTEL_COMPILER_BUILD_DATE=20080801 -D__PTRDIFF_TYPE__=long "-D__SIZE_TYPE__=unsigned long" -D__WCHAR_TYPE__=int "-D__WINT_TYPE__=unsigned int" "-D__INTMAX_TYPE__=long int" "-D__UINTMAX_TYPE__=long unsigned int" -D__unix__ -D__unix -D__linux__ -D__linux -D__gnu_linux__ -Dunix -Dlinux -D__x86_64 -D__x86_64__ -I. -I/sw/intel/fce/10.1.018/include -I/sw/intel/fce/10.1.018/substitute_headers -I/usr/lib/gcc/x86_64-linux-gnu/9/include -I/usr/local/include -I/usr/include -I/usr/lib/gcc/x86_64-linux-gnu/9/include -fixed -4Ycpp -4Ncvf -f_com=yes CMakeFortranCompilerId.F /tmp/ifortWhUKdN.i
+/sw/intel/fce/10.1.018/bin/fortcom    -D__INTEL_COMPILER=1010 -D_MT -D__ELF__ -D__INTEL_COMPILER_BUILD_DATE=20080801 -D__unix__ -D__unix -D__linux__ -D__linux -D__gnu_linux__ -Dunix -Dlinux -D__x86_64 -D__x86_64__ -mGLOB_pack_sort_init_list -I. -I/sw/intel/fce/10.1.018/include -I/sw/intel/fce/10.1.018/substitute_headers -I/usr/lib/gcc/x86_64-linux-gnu/9/include -I/usr/local/include -I/usr/include -I/usr/lib/gcc/x86_64-linux-gnu/9/include "-fp_modspec fp_speculation_FAST" -O2 -mP1OPT_version=1010 -mGLOB_source_language=GLOB_SOURCE_LANGUAGE_F90 -mGLOB_tune_for_fort -mGLOB_use_fort_dope_vector -mP2OPT_static_promotion -mP1OPT_print_version=FALSE -mP3OPT_use_mspp_call_convention -mCG_use_gas_got_workaround=F -mP2OPT_align_option_used=TRUE -mGLOB_options_string=-v -mGLOB_cxx_limited_range=FALSE -mP2OPT_eh_nirvana -mGLOB_diag_file=/tmp/ifortRAuceO.diag -mGLOB_as_output_backup_file_name=/tmp/ifortr98JQLas_.s -mGLOB_machine_model=GLOB_MACHINE_MODEL_EFI2 -mGLOB_fp_speculation=GLOB_FP_SPECULATION_FAST -mGLOB_extended_instructions=0x8 -mP2OPT_subs_out_of_bound=FALSE -mGLOB_ansi_alias -mIPOPT_ninl_user_level=2 -mIPOPT_args_in_regs=0 -mPGOPTI_value_profile_use=T -mIPOPT_activate -mIPOPT_lite -mP2OPT_hlo_level=2 -mP2OPT_hlo -mPAROPT_par_report=1 -mCG_emit_as_seg_grouping -mIPOPT_obj_output_file_name=/tmp/ifortRAuceO.o "-mGLOB_linker_version=(GNU Binutils for Ubuntu) 2.34" -mP3OPT_asm_target=P3OPT_ASM_TARGET_GAS -mGLOB_obj_output_file=/tmp/ifortRAuceO.o -mGLOB_source_dialect=GLOB_SOURCE_DIALECT_FORTRAN -mP1OPT_source_file_name=CMakeFortranCompilerId.F /tmp/ifortWhUKdN.i
+/sw/intel/fce/10.1.018/bin/fortcom: error while loading shared libraries: libstdc++.so.5: cannot open shared object file: No such file or directory
+ifort: error #10257: Fatal error in /sw/intel/fce/10.1.018/bin/fortcom, terminated by 0x7f
+rm /tmp/ifortPJJllNlibgcc
+
+rm /tmp/ifortnKu5gOgnudirs
+
+rm /tmp/ifortWhUKdN.i
+
+rm /tmp/ifortNqvNPMarg
+
+rm /tmp/ifortwwYqIPgas
+
+rm /tmp/ifortr98JQLas_.s
+
+rm /tmp/ifortt0lF2Kld_v
+
+rm /tmp/ifortPYJ2PLldashv
+
+rm /tmp/ifortGcpeROarg
+
+rm /tmp/ifortRAuceO.o
+
+
+
+Compiling the Fortran compiler identification source file "CMakeFortranCompilerId.F" failed.
+Compiler: /sw/intel/fce/10.1.018/bin/ifort 
+Build flags: 
+Id flags:  
+
+The output was:
+127
+/sw/intel/fce/10.1.018/bin/fortcom: error while loading shared libraries: libstdc++.so.5: cannot open shared object file: No such file or directory
+ifort: error #10257: Fatal error in /sw/intel/fce/10.1.018/bin/fortcom, terminated by 0x7f
+
+
+Compiling the Fortran compiler identification source file "CMakeFortranCompilerId.F" failed.
+Compiler: /sw/intel/fce/10.1.018/bin/ifort 
+Build flags: 
+Id flags: -c 
+
+The output was:
+127
+/sw/intel/fce/10.1.018/bin/fortcom: error while loading shared libraries: libstdc++.so.5: cannot open shared object file: No such file or directory
+ifort: error #10257: Fatal error in /sw/intel/fce/10.1.018/bin/fortcom, terminated by 0x7f
+
+
+Compiling the Fortran compiler identification source file "CMakeFortranCompilerId.F" failed.
+Compiler: /sw/intel/fce/10.1.018/bin/ifort 
+Build flags: 
+Id flags: -fpp 
+
+The output was:
+127
+/sw/intel/fce/10.1.018/bin/fortcom: error while loading shared libraries: libstdc++.so.5: cannot open shared object file: No such file or directory
+ifort: error #10257: Fatal error in /sw/intel/fce/10.1.018/bin/fortcom, terminated by 0x7f
+
+
+Checking whether the Fortran compiler is Compaq using "-what" did not match "Compaq Visual Fortran":
+ifort: command line error: no files specified; for help type "ifort -help"
+Checking whether the Fortran compiler is NAG using "-V" did not match "NAG Fortran Compiler":
+Intel(R) Fortran Compiler for applications running on Intel(R) 64, Version 10.1    Build 20080801 Package ID: l_fc_p_10.1.018
+Copyright (C) 1985-2008 Intel Corporation.  All rights reserved.
+
+Checking whether the Fortran compiler is Compaq using "-what" did not match "Compaq Visual Fortran":
+ifort: command line error: no files specified; for help type "ifort -help"
+Checking whether the Fortran compiler is NAG using "-V" did not match "NAG Fortran Compiler":
+Intel(R) Fortran Compiler for applications running on Intel(R) 64, Version 10.1    Build 20080801 Package ID: l_fc_p_10.1.018
+Copyright (C) 1985-2008 Intel Corporation.  All rights reserved.
+
+Detecting Fortran compiler ABI info failed to compile with the following output:
+Change Dir: /compass/Shared/Common/IT/projects/aurora/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_bdda9/fast && /usr/bin/make  -f CMakeFiles/cmTC_bdda9.dir/build.make CMakeFiles/cmTC_bdda9.dir/build
+make[1]: Entering directory '/compass/Shared/Common/IT/projects/aurora/CMakeFiles/CMakeTmp'
+Building Fortran object CMakeFiles/cmTC_bdda9.dir/CMakeFortranCompilerABI.F.o
+/sw/intel/fce/10.1.018/bin/ifort    -c /sw/cmake/cmake-3.19.6-Linux-x86_64/share/cmake-3.19/Modules/CMakeFortranCompilerABI.F -o CMakeFiles/cmTC_bdda9.dir/CMakeFortranCompilerABI.F.o
+/sw/intel/fce/10.1.018/bin/fortcom: error while loading shared libraries: libstdc++.so.5: cannot open shared object file: No such file or directory
+ifort: error #10257: Fatal error in /sw/intel/fce/10.1.018/bin/fortcom, terminated by 0x7f
+make[1]: *** [CMakeFiles/cmTC_bdda9.dir/build.make:85: CMakeFiles/cmTC_bdda9.dir/CMakeFortranCompilerABI.F.o] Error 127
+make[1]: Leaving directory '/compass/Shared/Common/IT/projects/aurora/CMakeFiles/CMakeTmp'
+make: *** [Makefile:140: cmTC_bdda9/fast] Error 2
+
+
+
+
+Determining if the Fortran compiler works failed with the following output:
+Change Dir: /compass/Shared/Common/IT/projects/aurora/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_4c7b3/fast && /usr/bin/make  -f CMakeFiles/cmTC_4c7b3.dir/build.make CMakeFiles/cmTC_4c7b3.dir/build
+make[1]: Entering directory '/compass/Shared/Common/IT/projects/aurora/CMakeFiles/CMakeTmp'
+Building Fortran object CMakeFiles/cmTC_4c7b3.dir/testFortranCompiler.f.o
+/sw/intel/fce/10.1.018/bin/ifort    -c /compass/Shared/Common/IT/projects/aurora/CMakeFiles/CMakeTmp/testFortranCompiler.f -o CMakeFiles/cmTC_4c7b3.dir/testFortranCompiler.f.o
+/sw/intel/fce/10.1.018/bin/fortcom: error while loading shared libraries: libstdc++.so.5: cannot open shared object file: No such file or directory
+ifort: error #10257: Fatal error in /sw/intel/fce/10.1.018/bin/fortcom, terminated by 0x7f
+make[1]: *** [CMakeFiles/cmTC_4c7b3.dir/build.make:85: CMakeFiles/cmTC_4c7b3.dir/testFortranCompiler.f.o] Error 127
+make[1]: Leaving directory '/compass/Shared/Common/IT/projects/aurora/CMakeFiles/CMakeTmp'
+make: *** [Makefile:140: cmTC_4c7b3/fast] Error 2
+
+
+
+Compiling the Fortran compiler identification source file "CMakeFortranCompilerId.F" failed.
+Compiler: /sw/intel/fce/10.1.018/bin/ifort 
+Build flags: 
+Id flags: -v 
+
+The output was:
+127
+Version 10.1 
+/sw/intel/fce/10.1.018/bin/fpp    -D__INTEL_COMPILER=1010 -D_MT -D__ELF__ -D__INTEL_COMPILER_BUILD_DATE=20080801 -D__PTRDIFF_TYPE__=long "-D__SIZE_TYPE__=unsigned long" -D__WCHAR_TYPE__=int "-D__WINT_TYPE__=unsigned int" "-D__INTMAX_TYPE__=long int" "-D__UINTMAX_TYPE__=long unsigned int" -D__unix__ -D__unix -D__linux__ -D__linux -D__gnu_linux__ -Dunix -Dlinux -D__x86_64 -D__x86_64__ -I. -I/sw/intel/fce/10.1.018/include -I/sw/intel/fce/10.1.018/substitute_headers -I/usr/lib/gcc/x86_64-linux-gnu/9/include -I/usr/local/include -I/usr/include -I/usr/lib/gcc/x86_64-linux-gnu/9/include -fixed -4Ycpp -4Ncvf -f_com=yes CMakeFortranCompilerId.F /tmp/ifortXUBq9o.i
+/sw/intel/fce/10.1.018/bin/fortcom    -D__INTEL_COMPILER=1010 -D_MT -D__ELF__ -D__INTEL_COMPILER_BUILD_DATE=20080801 -D__unix__ -D__unix -D__linux__ -D__linux -D__gnu_linux__ -Dunix -Dlinux -D__x86_64 -D__x86_64__ -mGLOB_pack_sort_init_list -I. -I/sw/intel/fce/10.1.018/include -I/sw/intel/fce/10.1.018/substitute_headers -I/usr/lib/gcc/x86_64-linux-gnu/9/include -I/usr/local/include -I/usr/include -I/usr/lib/gcc/x86_64-linux-gnu/9/include "-fp_modspec fp_speculation_FAST" -O2 -mP1OPT_version=1010 -mGLOB_source_language=GLOB_SOURCE_LANGUAGE_F90 -mGLOB_tune_for_fort -mGLOB_use_fort_dope_vector -mP2OPT_static_promotion -mP1OPT_print_version=FALSE -mP3OPT_use_mspp_call_convention -mCG_use_gas_got_workaround=F -mP2OPT_align_option_used=TRUE -mGLOB_options_string=-v -mGLOB_cxx_limited_range=FALSE -mP2OPT_eh_nirvana -mGLOB_diag_file=/tmp/ifortqDSPXq.diag -mGLOB_as_output_backup_file_name=/tmp/ifortHojfHqas_.s -mGLOB_machine_model=GLOB_MACHINE_MODEL_EFI2 -mGLOB_fp_speculation=GLOB_FP_SPECULATION_FAST -mGLOB_extended_instructions=0x8 -mP2OPT_subs_out_of_bound=FALSE -mGLOB_ansi_alias -mIPOPT_ninl_user_level=2 -mIPOPT_args_in_regs=0 -mPGOPTI_value_profile_use=T -mIPOPT_activate -mIPOPT_lite -mP2OPT_hlo_level=2 -mP2OPT_hlo -mPAROPT_par_report=1 -mCG_emit_as_seg_grouping -mIPOPT_obj_output_file_name=/tmp/ifortqDSPXq.o "-mGLOB_linker_version=(GNU Binutils for Ubuntu) 2.34" -mP3OPT_asm_target=P3OPT_ASM_TARGET_GAS -mGLOB_obj_output_file=/tmp/ifortqDSPXq.o -mGLOB_source_dialect=GLOB_SOURCE_DIALECT_FORTRAN -mP1OPT_source_file_name=CMakeFortranCompilerId.F /tmp/ifortXUBq9o.i
+/sw/intel/fce/10.1.018/bin/fortcom: error while loading shared libraries: libstdc++.so.5: cannot open shared object file: No such file or directory
+ifort: error #10257: Fatal error in /sw/intel/fce/10.1.018/bin/fortcom, terminated by 0x7f
+rm /tmp/ifortirLF1qlibgcc
+
+rm /tmp/ifortIWXQhrgnudirs
+
+rm /tmp/ifortXUBq9o.i
+
+rm /tmp/ifortoAuuloarg
+
+rm /tmp/ifortb6A5kngas
+
+rm /tmp/ifortHojfHqas_.s
+
+rm /tmp/ifortoEoSonld_v
+
+rm /tmp/ifortIt6MEpldashv
+
+rm /tmp/ifortygL2Lparg
+
+rm /tmp/ifortqDSPXq.o
+
+
+
+Compiling the Fortran compiler identification source file "CMakeFortranCompilerId.F" failed.
+Compiler: /sw/intel/fce/10.1.018/bin/ifort 
+Build flags: 
+Id flags:  
+
+The output was:
+127
+/sw/intel/fce/10.1.018/bin/fortcom: error while loading shared libraries: libstdc++.so.5: cannot open shared object file: No such file or directory
+ifort: error #10257: Fatal error in /sw/intel/fce/10.1.018/bin/fortcom, terminated by 0x7f
+
+
+Compiling the Fortran compiler identification source file "CMakeFortranCompilerId.F" failed.
+Compiler: /sw/intel/fce/10.1.018/bin/ifort 
+Build flags: 
+Id flags: -c 
+
+The output was:
+127
+/sw/intel/fce/10.1.018/bin/fortcom: error while loading shared libraries: libstdc++.so.5: cannot open shared object file: No such file or directory
+ifort: error #10257: Fatal error in /sw/intel/fce/10.1.018/bin/fortcom, terminated by 0x7f
+
+
+Compiling the Fortran compiler identification source file "CMakeFortranCompilerId.F" failed.
+Compiler: /sw/intel/fce/10.1.018/bin/ifort 
+Build flags: 
+Id flags: -fpp 
+
+The output was:
+127
+/sw/intel/fce/10.1.018/bin/fortcom: error while loading shared libraries: libstdc++.so.5: cannot open shared object file: No such file or directory
+ifort: error #10257: Fatal error in /sw/intel/fce/10.1.018/bin/fortcom, terminated by 0x7f
+
+
+Compiling the Fortran compiler identification source file "CMakeFortranCompilerId.F" failed.
+Compiler: /sw/intel/fce/10.1.018/bin/ifort 
+Build flags: 
+Id flags: -v 
+
+The output was:
+127
+Version 10.1 
+/sw/intel/fce/10.1.018/bin/fpp    -D__INTEL_COMPILER=1010 -D_MT -D__ELF__ -D__INTEL_COMPILER_BUILD_DATE=20080801 -D__PTRDIFF_TYPE__=long "-D__SIZE_TYPE__=unsigned long" -D__WCHAR_TYPE__=int "-D__WINT_TYPE__=unsigned int" "-D__INTMAX_TYPE__=long int" "-D__UINTMAX_TYPE__=long unsigned int" -D__unix__ -D__unix -D__linux__ -D__linux -D__gnu_linux__ -Dunix -Dlinux -D__x86_64 -D__x86_64__ -I. -I/sw/intel/fce/10.1.018/include -I/sw/intel/fce/10.1.018/substitute_headers -I/usr/lib/gcc/x86_64-linux-gnu/9/include -I/usr/local/include -I/usr/include -I/usr/lib/gcc/x86_64-linux-gnu/9/include -fixed -4Ycpp -4Ncvf -f_com=yes CMakeFortranCompilerId.F /tmp/ifortjYoBK5.i
+/sw/intel/fce/10.1.018/bin/fortcom    -D__INTEL_COMPILER=1010 -D_MT -D__ELF__ -D__INTEL_COMPILER_BUILD_DATE=20080801 -D__unix__ -D__unix -D__linux__ -D__linux -D__gnu_linux__ -Dunix -Dlinux -D__x86_64 -D__x86_64__ -mGLOB_pack_sort_init_list -I. -I/sw/intel/fce/10.1.018/include -I/sw/intel/fce/10.1.018/substitute_headers -I/usr/lib/gcc/x86_64-linux-gnu/9/include -I/usr/local/include -I/usr/include -I/usr/lib/gcc/x86_64-linux-gnu/9/include "-fp_modspec fp_speculation_FAST" -O2 -mP1OPT_version=1010 -mGLOB_source_language=GLOB_SOURCE_LANGUAGE_F90 -mGLOB_tune_for_fort -mGLOB_use_fort_dope_vector -mP2OPT_static_promotion -mP1OPT_print_version=FALSE -mP3OPT_use_mspp_call_convention -mCG_use_gas_got_workaround=F -mP2OPT_align_option_used=TRUE -mGLOB_options_string=-v -mGLOB_cxx_limited_range=FALSE -mP2OPT_eh_nirvana -mGLOB_diag_file=/tmp/ifortOdkgG8.diag -mGLOB_as_output_backup_file_name=/tmp/ifortDrRin8as_.s -mGLOB_machine_model=GLOB_MACHINE_MODEL_EFI2 -mGLOB_fp_speculation=GLOB_FP_SPECULATION_FAST -mGLOB_extended_instructions=0x8 -mP2OPT_subs_out_of_bound=FALSE -mGLOB_ansi_alias -mIPOPT_ninl_user_level=2 -mIPOPT_args_in_regs=0 -mPGOPTI_value_profile_use=T -mIPOPT_activate -mIPOPT_lite -mP2OPT_hlo_level=2 -mP2OPT_hlo -mPAROPT_par_report=1 -mCG_emit_as_seg_grouping -mIPOPT_obj_output_file_name=/tmp/ifortOdkgG8.o "-mGLOB_linker_version=(GNU Binutils for Ubuntu) 2.34" -mP3OPT_asm_target=P3OPT_ASM_TARGET_GAS -mGLOB_obj_output_file=/tmp/ifortOdkgG8.o -mGLOB_source_dialect=GLOB_SOURCE_DIALECT_FORTRAN -mP1OPT_source_file_name=CMakeFortranCompilerId.F /tmp/ifortjYoBK5.i
+/sw/intel/fce/10.1.018/bin/fortcom: error while loading shared libraries: libstdc++.so.5: cannot open shared object file: No such file or directory
+ifort: error #10257: Fatal error in /sw/intel/fce/10.1.018/bin/fortcom, terminated by 0x7f
+rm /tmp/ifortcbroB8libgcc
+
+rm /tmp/ifortWdbPr6gnudirs
+
+rm /tmp/ifortjYoBK5.i
+
+rm /tmp/ifortBQ9bv6arg
+
+rm /tmp/ifortUqZN85gas
+
+rm /tmp/ifortDrRin8as_.s
+
+rm /tmp/ifortDutqI7ld_v
+
+rm /tmp/ifortZiXdH6ldashv
+
+rm /tmp/ifortExYEd6arg
+
+rm /tmp/ifortOdkgG8.o
+
+
+
+Compiling the Fortran compiler identification source file "CMakeFortranCompilerId.F" failed.
+Compiler: /sw/intel/fce/10.1.018/bin/ifort 
+Build flags: 
+Id flags:  
+
+The output was:
+127
+/sw/intel/fce/10.1.018/bin/fortcom: error while loading shared libraries: libstdc++.so.5: cannot open shared object file: No such file or directory
+ifort: error #10257: Fatal error in /sw/intel/fce/10.1.018/bin/fortcom, terminated by 0x7f
+
+
+Compiling the Fortran compiler identification source file "CMakeFortranCompilerId.F" failed.
+Compiler: /sw/intel/fce/10.1.018/bin/ifort 
+Build flags: 
+Id flags: -c 
+
+The output was:
+127
+/sw/intel/fce/10.1.018/bin/fortcom: error while loading shared libraries: libstdc++.so.5: cannot open shared object file: No such file or directory
+ifort: error #10257: Fatal error in /sw/intel/fce/10.1.018/bin/fortcom, terminated by 0x7f
+
+
+Compiling the Fortran compiler identification source file "CMakeFortranCompilerId.F" failed.
+Compiler: /sw/intel/fce/10.1.018/bin/ifort 
+Build flags: 
+Id flags: -fpp 
+
+The output was:
+127
+/sw/intel/fce/10.1.018/bin/fortcom: error while loading shared libraries: libstdc++.so.5: cannot open shared object file: No such file or directory
+ifort: error #10257: Fatal error in /sw/intel/fce/10.1.018/bin/fortcom, terminated by 0x7f
+
+
+Checking whether the Fortran compiler is Compaq using "-what" did not match "Compaq Visual Fortran":
+ifort: command line error: no files specified; for help type "ifort -help"
+Checking whether the Fortran compiler is NAG using "-V" did not match "NAG Fortran Compiler":
+Intel(R) Fortran Compiler for applications running on Intel(R) 64, Version 10.1    Build 20080801 Package ID: l_fc_p_10.1.018
+Copyright (C) 1985-2008 Intel Corporation.  All rights reserved.
+
+Checking whether the Fortran compiler is Compaq using "-what" did not match "Compaq Visual Fortran":
+ifort: command line error: no files specified; for help type "ifort -help"
+Checking whether the Fortran compiler is NAG using "-V" did not match "NAG Fortran Compiler":
+Intel(R) Fortran Compiler for applications running on Intel(R) 64, Version 10.1    Build 20080801 Package ID: l_fc_p_10.1.018
+Copyright (C) 1985-2008 Intel Corporation.  All rights reserved.
+
+Detecting Fortran compiler ABI info failed to compile with the following output:
+Change Dir: /compass/Shared/Common/IT/projects/aurora/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_80a48/fast && /usr/bin/make  -f CMakeFiles/cmTC_80a48.dir/build.make CMakeFiles/cmTC_80a48.dir/build
+make[1]: Entering directory '/compass/Shared/Common/IT/projects/aurora/CMakeFiles/CMakeTmp'
+Building Fortran object CMakeFiles/cmTC_80a48.dir/CMakeFortranCompilerABI.F.o
+/sw/intel/fce/10.1.018/bin/ifort    -c /sw/cmake/cmake-3.19.6-Linux-x86_64/share/cmake-3.19/Modules/CMakeFortranCompilerABI.F -o CMakeFiles/cmTC_80a48.dir/CMakeFortranCompilerABI.F.o
+/sw/intel/fce/10.1.018/bin/fortcom: error while loading shared libraries: libstdc++.so.5: cannot open shared object file: No such file or directory
+ifort: error #10257: Fatal error in /sw/intel/fce/10.1.018/bin/fortcom, terminated by 0x7f
+make[1]: *** [CMakeFiles/cmTC_80a48.dir/build.make:85: CMakeFiles/cmTC_80a48.dir/CMakeFortranCompilerABI.F.o] Error 127
+make[1]: Leaving directory '/compass/Shared/Common/IT/projects/aurora/CMakeFiles/CMakeTmp'
+make: *** [Makefile:140: cmTC_80a48/fast] Error 2
+
+
+
+
+Determining if the Fortran compiler works failed with the following output:
+Change Dir: /compass/Shared/Common/IT/projects/aurora/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_afa41/fast && /usr/bin/make  -f CMakeFiles/cmTC_afa41.dir/build.make CMakeFiles/cmTC_afa41.dir/build
+make[1]: Entering directory '/compass/Shared/Common/IT/projects/aurora/CMakeFiles/CMakeTmp'
+Building Fortran object CMakeFiles/cmTC_afa41.dir/testFortranCompiler.f.o
+/sw/intel/fce/10.1.018/bin/ifort    -c /compass/Shared/Common/IT/projects/aurora/CMakeFiles/CMakeTmp/testFortranCompiler.f -o CMakeFiles/cmTC_afa41.dir/testFortranCompiler.f.o
+/sw/intel/fce/10.1.018/bin/fortcom: error while loading shared libraries: libstdc++.so.5: cannot open shared object file: No such file or directory
+ifort: error #10257: Fatal error in /sw/intel/fce/10.1.018/bin/fortcom, terminated by 0x7f
+make[1]: *** [CMakeFiles/cmTC_afa41.dir/build.make:85: CMakeFiles/cmTC_afa41.dir/testFortranCompiler.f.o] Error 127
+make[1]: Leaving directory '/compass/Shared/Common/IT/projects/aurora/CMakeFiles/CMakeTmp'
+make: *** [Makefile:140: cmTC_afa41/fast] Error 2
+
+
+
+Compiling the Fortran compiler identification source file "CMakeFortranCompilerId.F" failed.
+Compiler: /sw/intel/fce/10.1.018/bin/ifort 
+Build flags: 
+Id flags: -v 
+
+The output was:
+127
+Version 10.1 
+/sw/intel/fce/10.1.018/bin/fpp    -D__INTEL_COMPILER=1010 -D_MT -D__ELF__ -D__INTEL_COMPILER_BUILD_DATE=20080801 -D__PTRDIFF_TYPE__=long "-D__SIZE_TYPE__=unsigned long" -D__WCHAR_TYPE__=int "-D__WINT_TYPE__=unsigned int" "-D__INTMAX_TYPE__=long int" "-D__UINTMAX_TYPE__=long unsigned int" -D__unix__ -D__unix -D__linux__ -D__linux -D__gnu_linux__ -Dunix -Dlinux -D__x86_64 -D__x86_64__ -I. -I/sw/intel/fce/10.1.018/include -I/sw/intel/fce/10.1.018/substitute_headers -I/usr/lib/gcc/x86_64-linux-gnu/9/include -I/usr/local/include -I/usr/include -I/usr/lib/gcc/x86_64-linux-gnu/9/include -fixed -4Ycpp -4Ncvf -f_com=yes CMakeFortranCompilerId.F /tmp/ifortz3z3Xp.i
+/sw/intel/fce/10.1.018/bin/fortcom    -D__INTEL_COMPILER=1010 -D_MT -D__ELF__ -D__INTEL_COMPILER_BUILD_DATE=20080801 -D__unix__ -D__unix -D__linux__ -D__linux -D__gnu_linux__ -Dunix -Dlinux -D__x86_64 -D__x86_64__ -mGLOB_pack_sort_init_list -I. -I/sw/intel/fce/10.1.018/include -I/sw/intel/fce/10.1.018/substitute_headers -I/usr/lib/gcc/x86_64-linux-gnu/9/include -I/usr/local/include -I/usr/include -I/usr/lib/gcc/x86_64-linux-gnu/9/include "-fp_modspec fp_speculation_FAST" -O2 -mP1OPT_version=1010 -mGLOB_source_language=GLOB_SOURCE_LANGUAGE_F90 -mGLOB_tune_for_fort -mGLOB_use_fort_dope_vector -mP2OPT_static_promotion -mP1OPT_print_version=FALSE -mP3OPT_use_mspp_call_convention -mCG_use_gas_got_workaround=F -mP2OPT_align_option_used=TRUE -mGLOB_options_string=-v -mGLOB_cxx_limited_range=FALSE -mP2OPT_eh_nirvana -mGLOB_diag_file=/tmp/ifortwEaOhr.diag -mGLOB_as_output_backup_file_name=/tmp/ifortzB2maras_.s -mGLOB_machine_model=GLOB_MACHINE_MODEL_EFI2 -mGLOB_fp_speculation=GLOB_FP_SPECULATION_FAST -mGLOB_extended_instructions=0x8 -mP2OPT_subs_out_of_bound=FALSE -mGLOB_ansi_alias -mIPOPT_ninl_user_level=2 -mIPOPT_args_in_regs=0 -mPGOPTI_value_profile_use=T -mIPOPT_activate -mIPOPT_lite -mP2OPT_hlo_level=2 -mP2OPT_hlo -mPAROPT_par_report=1 -mCG_emit_as_seg_grouping -mIPOPT_obj_output_file_name=/tmp/ifortwEaOhr.o "-mGLOB_linker_version=(GNU Binutils for Ubuntu) 2.34" -mP3OPT_asm_target=P3OPT_ASM_TARGET_GAS -mGLOB_obj_output_file=/tmp/ifortwEaOhr.o -mGLOB_source_dialect=GLOB_SOURCE_DIALECT_FORTRAN -mP1OPT_source_file_name=CMakeFortranCompilerId.F /tmp/ifortz3z3Xp.i
+/sw/intel/fce/10.1.018/bin/fortcom: error while loading shared libraries: libstdc++.so.5: cannot open shared object file: No such file or directory
+ifort: error #10257: Fatal error in /sw/intel/fce/10.1.018/bin/fortcom, terminated by 0x7f
+rm /tmp/ifort04Lufrlibgcc
+
+rm /tmp/ifortgCOf9rgnudirs
+
+rm /tmp/ifortz3z3Xp.i
+
+rm /tmp/ifortvm0fdrarg
+
+rm /tmp/ifortva3Pnrgas
+
+rm /tmp/ifortzB2maras_.s
+
+rm /tmp/iforteXh9Zqld_v
+
+rm /tmp/ifortFI5hBtldashv
+
+rm /tmp/iforteDeuEsarg
+
+rm /tmp/ifortwEaOhr.o
+
+
+
+Compiling the Fortran compiler identification source file "CMakeFortranCompilerId.F" failed.
+Compiler: /sw/intel/fce/10.1.018/bin/ifort 
+Build flags: 
+Id flags:  
+
+The output was:
+127
+/sw/intel/fce/10.1.018/bin/fortcom: error while loading shared libraries: libstdc++.so.5: cannot open shared object file: No such file or directory
+ifort: error #10257: Fatal error in /sw/intel/fce/10.1.018/bin/fortcom, terminated by 0x7f
+
+
+Compiling the Fortran compiler identification source file "CMakeFortranCompilerId.F" failed.
+Compiler: /sw/intel/fce/10.1.018/bin/ifort 
+Build flags: 
+Id flags: -c 
+
+The output was:
+127
+/sw/intel/fce/10.1.018/bin/fortcom: error while loading shared libraries: libstdc++.so.5: cannot open shared object file: No such file or directory
+ifort: error #10257: Fatal error in /sw/intel/fce/10.1.018/bin/fortcom, terminated by 0x7f
+
+
+Compiling the Fortran compiler identification source file "CMakeFortranCompilerId.F" failed.
+Compiler: /sw/intel/fce/10.1.018/bin/ifort 
+Build flags: 
+Id flags: -fpp 
+
+The output was:
+127
+/sw/intel/fce/10.1.018/bin/fortcom: error while loading shared libraries: libstdc++.so.5: cannot open shared object file: No such file or directory
+ifort: error #10257: Fatal error in /sw/intel/fce/10.1.018/bin/fortcom, terminated by 0x7f
+
+
+Compiling the Fortran compiler identification source file "CMakeFortranCompilerId.F" failed.
+Compiler: /sw/intel/fce/10.1.018/bin/ifort 
+Build flags: 
+Id flags: -v 
+
+The output was:
+127
+Version 10.1 
+/sw/intel/fce/10.1.018/bin/fpp    -D__INTEL_COMPILER=1010 -D_MT -D__ELF__ -D__INTEL_COMPILER_BUILD_DATE=20080801 -D__PTRDIFF_TYPE__=long "-D__SIZE_TYPE__=unsigned long" -D__WCHAR_TYPE__=int "-D__WINT_TYPE__=unsigned int" "-D__INTMAX_TYPE__=long int" "-D__UINTMAX_TYPE__=long unsigned int" -D__unix__ -D__unix -D__linux__ -D__linux -D__gnu_linux__ -Dunix -Dlinux -D__x86_64 -D__x86_64__ -I. -I/sw/intel/fce/10.1.018/include -I/sw/intel/fce/10.1.018/substitute_headers -I/usr/lib/gcc/x86_64-linux-gnu/9/include -I/usr/local/include -I/usr/include -I/usr/lib/gcc/x86_64-linux-gnu/9/include -fixed -4Ycpp -4Ncvf -f_com=yes CMakeFortranCompilerId.F /tmp/ifort7ojVGl.i
+/sw/intel/fce/10.1.018/bin/fortcom    -D__INTEL_COMPILER=1010 -D_MT -D__ELF__ -D__INTEL_COMPILER_BUILD_DATE=20080801 -D__unix__ -D__unix -D__linux__ -D__linux -D__gnu_linux__ -Dunix -Dlinux -D__x86_64 -D__x86_64__ -mGLOB_pack_sort_init_list -I. -I/sw/intel/fce/10.1.018/include -I/sw/intel/fce/10.1.018/substitute_headers -I/usr/lib/gcc/x86_64-linux-gnu/9/include -I/usr/local/include -I/usr/include -I/usr/lib/gcc/x86_64-linux-gnu/9/include "-fp_modspec fp_speculation_FAST" -O2 -mP1OPT_version=1010 -mGLOB_source_language=GLOB_SOURCE_LANGUAGE_F90 -mGLOB_tune_for_fort -mGLOB_use_fort_dope_vector -mP2OPT_static_promotion -mP1OPT_print_version=FALSE -mP3OPT_use_mspp_call_convention -mCG_use_gas_got_workaround=F -mP2OPT_align_option_used=TRUE -mGLOB_options_string=-v -mGLOB_cxx_limited_range=FALSE -mP2OPT_eh_nirvana -mGLOB_diag_file=/tmp/ifortVinGVl.diag -mGLOB_as_output_backup_file_name=/tmp/ifortbHop6mas_.s -mGLOB_machine_model=GLOB_MACHINE_MODEL_EFI2 -mGLOB_fp_speculation=GLOB_FP_SPECULATION_FAST -mGLOB_extended_instructions=0x8 -mP2OPT_subs_out_of_bound=FALSE -mGLOB_ansi_alias -mIPOPT_ninl_user_level=2 -mIPOPT_args_in_regs=0 -mPGOPTI_value_profile_use=T -mIPOPT_activate -mIPOPT_lite -mP2OPT_hlo_level=2 -mP2OPT_hlo -mPAROPT_par_report=1 -mCG_emit_as_seg_grouping -mIPOPT_obj_output_file_name=/tmp/ifortVinGVl.o "-mGLOB_linker_version=(GNU Binutils for Ubuntu) 2.34" -mP3OPT_asm_target=P3OPT_ASM_TARGET_GAS -mGLOB_obj_output_file=/tmp/ifortVinGVl.o -mGLOB_source_dialect=GLOB_SOURCE_DIALECT_FORTRAN -mP1OPT_source_file_name=CMakeFortranCompilerId.F /tmp/ifort7ojVGl.i
+/sw/intel/fce/10.1.018/bin/fortcom: error while loading shared libraries: libstdc++.so.5: cannot open shared object file: No such file or directory
+ifort: error #10257: Fatal error in /sw/intel/fce/10.1.018/bin/fortcom, terminated by 0x7f
+rm /tmp/ifort1LZD5olibgcc
+
+rm /tmp/ifortQcAiMngnudirs
+
+rm /tmp/ifort7ojVGl.i
+
+rm /tmp/ifortV8DXIlarg
+
+rm /tmp/ifortEwKVwlgas
+
+rm /tmp/ifortbHop6mas_.s
+
+rm /tmp/ifortKaLa1nld_v
+
+rm /tmp/ifort42B25lldashv
+
+rm /tmp/ifortYWbsMmarg
+
+rm /tmp/ifortVinGVl.o
+
+
+
+Compiling the Fortran compiler identification source file "CMakeFortranCompilerId.F" failed.
+Compiler: /sw/intel/fce/10.1.018/bin/ifort 
+Build flags: 
+Id flags:  
+
+The output was:
+127
+/sw/intel/fce/10.1.018/bin/fortcom: error while loading shared libraries: libstdc++.so.5: cannot open shared object file: No such file or directory
+ifort: error #10257: Fatal error in /sw/intel/fce/10.1.018/bin/fortcom, terminated by 0x7f
+
+
+Compiling the Fortran compiler identification source file "CMakeFortranCompilerId.F" failed.
+Compiler: /sw/intel/fce/10.1.018/bin/ifort 
+Build flags: 
+Id flags: -c 
+
+The output was:
+127
+/sw/intel/fce/10.1.018/bin/fortcom: error while loading shared libraries: libstdc++.so.5: cannot open shared object file: No such file or directory
+ifort: error #10257: Fatal error in /sw/intel/fce/10.1.018/bin/fortcom, terminated by 0x7f
+
+
+Compiling the Fortran compiler identification source file "CMakeFortranCompilerId.F" failed.
+Compiler: /sw/intel/fce/10.1.018/bin/ifort 
+Build flags: 
+Id flags: -fpp 
+
+The output was:
+127
+/sw/intel/fce/10.1.018/bin/fortcom: error while loading shared libraries: libstdc++.so.5: cannot open shared object file: No such file or directory
+ifort: error #10257: Fatal error in /sw/intel/fce/10.1.018/bin/fortcom, terminated by 0x7f
+
+
+Checking whether the Fortran compiler is Compaq using "-what" did not match "Compaq Visual Fortran":
+ifort: command line error: no files specified; for help type "ifort -help"
+Checking whether the Fortran compiler is NAG using "-V" did not match "NAG Fortran Compiler":
+Intel(R) Fortran Compiler for applications running on Intel(R) 64, Version 10.1    Build 20080801 Package ID: l_fc_p_10.1.018
+Copyright (C) 1985-2008 Intel Corporation.  All rights reserved.
+
+Checking whether the Fortran compiler is Compaq using "-what" did not match "Compaq Visual Fortran":
+ifort: command line error: no files specified; for help type "ifort -help"
+Checking whether the Fortran compiler is NAG using "-V" did not match "NAG Fortran Compiler":
+Intel(R) Fortran Compiler for applications running on Intel(R) 64, Version 10.1    Build 20080801 Package ID: l_fc_p_10.1.018
+Copyright (C) 1985-2008 Intel Corporation.  All rights reserved.
+
+Detecting Fortran compiler ABI info failed to compile with the following output:
+Change Dir: /compass/Shared/Common/IT/projects/aurora/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_346f6/fast && /usr/bin/make  -f CMakeFiles/cmTC_346f6.dir/build.make CMakeFiles/cmTC_346f6.dir/build
+make[1]: Entering directory '/compass/Shared/Common/IT/projects/aurora/CMakeFiles/CMakeTmp'
+Building Fortran object CMakeFiles/cmTC_346f6.dir/CMakeFortranCompilerABI.F.o
+/sw/intel/fce/10.1.018/bin/ifort    -c /sw/cmake/cmake-3.19.6-Linux-x86_64/share/cmake-3.19/Modules/CMakeFortranCompilerABI.F -o CMakeFiles/cmTC_346f6.dir/CMakeFortranCompilerABI.F.o
+/sw/intel/fce/10.1.018/bin/fortcom: error while loading shared libraries: libstdc++.so.5: cannot open shared object file: No such file or directory
+ifort: error #10257: Fatal error in /sw/intel/fce/10.1.018/bin/fortcom, terminated by 0x7f
+make[1]: *** [CMakeFiles/cmTC_346f6.dir/build.make:85: CMakeFiles/cmTC_346f6.dir/CMakeFortranCompilerABI.F.o] Error 127
+make[1]: Leaving directory '/compass/Shared/Common/IT/projects/aurora/CMakeFiles/CMakeTmp'
+make: *** [Makefile:140: cmTC_346f6/fast] Error 2
+
+
+
+
+Determining if the Fortran compiler works failed with the following output:
+Change Dir: /compass/Shared/Common/IT/projects/aurora/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_6cc01/fast && /usr/bin/make  -f CMakeFiles/cmTC_6cc01.dir/build.make CMakeFiles/cmTC_6cc01.dir/build
+make[1]: Entering directory '/compass/Shared/Common/IT/projects/aurora/CMakeFiles/CMakeTmp'
+Building Fortran object CMakeFiles/cmTC_6cc01.dir/testFortranCompiler.f.o
+/sw/intel/fce/10.1.018/bin/ifort    -c /compass/Shared/Common/IT/projects/aurora/CMakeFiles/CMakeTmp/testFortranCompiler.f -o CMakeFiles/cmTC_6cc01.dir/testFortranCompiler.f.o
+/sw/intel/fce/10.1.018/bin/fortcom: error while loading shared libraries: libstdc++.so.5: cannot open shared object file: No such file or directory
+ifort: error #10257: Fatal error in /sw/intel/fce/10.1.018/bin/fortcom, terminated by 0x7f
+make[1]: *** [CMakeFiles/cmTC_6cc01.dir/build.make:85: CMakeFiles/cmTC_6cc01.dir/testFortranCompiler.f.o] Error 127
+make[1]: Leaving directory '/compass/Shared/Common/IT/projects/aurora/CMakeFiles/CMakeTmp'
+make: *** [Makefile:140: cmTC_6cc01/fast] Error 2
+
+
+
+Compiling the Fortran compiler identification source file "CMakeFortranCompilerId.F" failed.
+Compiler: /sw/intel/fce/10.1.018/bin/ifort 
+Build flags: 
+Id flags: -v 
+
+The output was:
+1
+
+Error: A license for FCompL could not be obtained (-1,359,2).
+
+Is your license file in the right location and readable?
+The location of your license file should be specified via
+the $INTEL_LICENSE_FILE environment variable.
+
+License file(s) used were (in this order):
+    1.  /sw/intel/fce/10.1.018/licenses/*.lic
+    2.  /opt/intel/licenses
+    3.  /compass/home/jaulmes/intel/licenses
+    4.  /Users/Shared/Library/Application Support/Intel/Licenses
+
+Please visit http://support.intel.com/support/performancetools/support.htm if you require technical assistance.
+
+ifort: error #10052: could not checkout FLEXlm license
+
+
+Compiling the Fortran compiler identification source file "CMakeFortranCompilerId.F" failed.
+Compiler: /sw/intel/fce/10.1.018/bin/ifort 
+Build flags: 
+Id flags:  
+
+The output was:
+1
+
+Error: A license for FCompL could not be obtained (-1,359,2).
+
+Is your license file in the right location and readable?
+The location of your license file should be specified via
+the $INTEL_LICENSE_FILE environment variable.
+
+License file(s) used were (in this order):
+    1.  /sw/intel/fce/10.1.018/licenses/*.lic
+    2.  /opt/intel/licenses
+    3.  /compass/home/jaulmes/intel/licenses
+    4.  /Users/Shared/Library/Application Support/Intel/Licenses
+
+Please visit http://support.intel.com/support/performancetools/support.htm if you require technical assistance.
+
+ifort: error #10052: could not checkout FLEXlm license
+
+
+Compiling the Fortran compiler identification source file "CMakeFortranCompilerId.F" failed.
+Compiler: /sw/intel/fce/10.1.018/bin/ifort 
+Build flags: 
+Id flags: -c 
+
+The output was:
+1
+
+Error: A license for FCompL could not be obtained (-1,359,2).
+
+Is your license file in the right location and readable?
+The location of your license file should be specified via
+the $INTEL_LICENSE_FILE environment variable.
+
+License file(s) used were (in this order):
+    1.  /sw/intel/fce/10.1.018/licenses/*.lic
+    2.  /opt/intel/licenses
+    3.  /compass/home/jaulmes/intel/licenses
+    4.  /Users/Shared/Library/Application Support/Intel/Licenses
+
+Please visit http://support.intel.com/support/performancetools/support.htm if you require technical assistance.
+
+ifort: error #10052: could not checkout FLEXlm license
+
+
+Compiling the Fortran compiler identification source file "CMakeFortranCompilerId.F" failed.
+Compiler: /sw/intel/fce/10.1.018/bin/ifort 
+Build flags: 
+Id flags: -fpp 
+
+The output was:
+1
+
+Error: A license for FCompL could not be obtained (-1,359,2).
+
+Is your license file in the right location and readable?
+The location of your license file should be specified via
+the $INTEL_LICENSE_FILE environment variable.
+
+License file(s) used were (in this order):
+    1.  /sw/intel/fce/10.1.018/licenses/*.lic
+    2.  /opt/intel/licenses
+    3.  /compass/home/jaulmes/intel/licenses
+    4.  /Users/Shared/Library/Application Support/Intel/Licenses
+
+Please visit http://support.intel.com/support/performancetools/support.htm if you require technical assistance.
+
+ifort: error #10052: could not checkout FLEXlm license
+
+
+Compiling the Fortran compiler identification source file "CMakeFortranCompilerId.F" failed.
+Compiler: /sw/intel/fce/10.1.018/bin/ifort 
+Build flags: 
+Id flags: -v 
+
+The output was:
+1
+
+Error: A license for FCompL could not be obtained (-1,359,2).
+
+Is your license file in the right location and readable?
+The location of your license file should be specified via
+the $INTEL_LICENSE_FILE environment variable.
+
+License file(s) used were (in this order):
+    1.  /sw/intel/fce/10.1.018/licenses/*.lic
+    2.  /opt/intel/licenses
+    3.  /compass/home/jaulmes/intel/licenses
+    4.  /Users/Shared/Library/Application Support/Intel/Licenses
+
+Please visit http://support.intel.com/support/performancetools/support.htm if you require technical assistance.
+
+ifort: error #10052: could not checkout FLEXlm license
+
+
+Compiling the Fortran compiler identification source file "CMakeFortranCompilerId.F" failed.
+Compiler: /sw/intel/fce/10.1.018/bin/ifort 
+Build flags: 
+Id flags:  
+
+The output was:
+1
+
+Error: A license for FCompL could not be obtained (-1,359,2).
+
+Is your license file in the right location and readable?
+The location of your license file should be specified via
+the $INTEL_LICENSE_FILE environment variable.
+
+License file(s) used were (in this order):
+    1.  /sw/intel/fce/10.1.018/licenses/*.lic
+    2.  /opt/intel/licenses
+    3.  /compass/home/jaulmes/intel/licenses
+    4.  /Users/Shared/Library/Application Support/Intel/Licenses
+
+Please visit http://support.intel.com/support/performancetools/support.htm if you require technical assistance.
+
+ifort: error #10052: could not checkout FLEXlm license
+
+
+Compiling the Fortran compiler identification source file "CMakeFortranCompilerId.F" failed.
+Compiler: /sw/intel/fce/10.1.018/bin/ifort 
+Build flags: 
+Id flags: -c 
+
+The output was:
+1
+
+Error: A license for FCompL could not be obtained (-1,359,2).
+
+Is your license file in the right location and readable?
+The location of your license file should be specified via
+the $INTEL_LICENSE_FILE environment variable.
+
+License file(s) used were (in this order):
+    1.  /sw/intel/fce/10.1.018/licenses/*.lic
+    2.  /opt/intel/licenses
+    3.  /compass/home/jaulmes/intel/licenses
+    4.  /Users/Shared/Library/Application Support/Intel/Licenses
+
+Please visit http://support.intel.com/support/performancetools/support.htm if you require technical assistance.
+
+ifort: error #10052: could not checkout FLEXlm license
+
+
+Compiling the Fortran compiler identification source file "CMakeFortranCompilerId.F" failed.
+Compiler: /sw/intel/fce/10.1.018/bin/ifort 
+Build flags: 
+Id flags: -fpp 
+
+The output was:
+1
+
+Error: A license for FCompL could not be obtained (-1,359,2).
+
+Is your license file in the right location and readable?
+The location of your license file should be specified via
+the $INTEL_LICENSE_FILE environment variable.
+
+License file(s) used were (in this order):
+    1.  /sw/intel/fce/10.1.018/licenses/*.lic
+    2.  /opt/intel/licenses
+    3.  /compass/home/jaulmes/intel/licenses
+    4.  /Users/Shared/Library/Application Support/Intel/Licenses
+
+Please visit http://support.intel.com/support/performancetools/support.htm if you require technical assistance.
+
+ifort: error #10052: could not checkout FLEXlm license
+
+
+Checking whether the Fortran compiler is Compaq using "-what" did not match "Compaq Visual Fortran":
+
+Error: A license for FCompL could not be obtained (-1,359,2).
+
+Is your license file in the right location and readable?
+The location of your license file should be specified via
+the $INTEL_LICENSE_FILE environment variable.
+
+License file(s) used were (in this order):
+    1.  /sw/intel/fce/10.1.018/licenses/*.lic
+    2.  /opt/intel/licenses
+    3.  /compass/home/jaulmes/intel/licenses
+    4.  /Users/Shared/Library/Application Support/Intel/Licenses
+
+Please visit http://support.intel.com/support/performancetools/support.htm if you require technical assistance.
+
+ifort: error #10052: could not checkout FLEXlm license
+Checking whether the Fortran compiler is NAG using "-V" did not match "NAG Fortran Compiler":
+Intel(R) Fortran Compiler for applications running on Intel(R) 64, Version 10.1    Build 20080801 Package ID: l_fc_p_10.1.018
+Copyright (C) 1985-2008 Intel Corporation.  All rights reserved.
+
+Error: A license for FCompL could not be obtained (-1,359,2).
+
+Is your license file in the right location and readable?
+The location of your license file should be specified via
+the $INTEL_LICENSE_FILE environment variable.
+
+License file(s) used were (in this order):
+    1.  /sw/intel/fce/10.1.018/licenses/*.lic
+    2.  /opt/intel/licenses
+    3.  /compass/home/jaulmes/intel/licenses
+    4.  /Users/Shared/Library/Application Support/Intel/Licenses
+
+Please visit http://support.intel.com/support/performancetools/support.htm if you require technical assistance.
+
+ifort: error #10052: could not checkout FLEXlm license
+Checking whether the Fortran compiler is Compaq using "-what" did not match "Compaq Visual Fortran":
+
+Error: A license for FCompL could not be obtained (-1,359,2).
+
+Is your license file in the right location and readable?
+The location of your license file should be specified via
+the $INTEL_LICENSE_FILE environment variable.
+
+License file(s) used were (in this order):
+    1.  /sw/intel/fce/10.1.018/licenses/*.lic
+    2.  /opt/intel/licenses
+    3.  /compass/home/jaulmes/intel/licenses
+    4.  /Users/Shared/Library/Application Support/Intel/Licenses
+
+Please visit http://support.intel.com/support/performancetools/support.htm if you require technical assistance.
+
+ifort: error #10052: could not checkout FLEXlm license
+Checking whether the Fortran compiler is NAG using "-V" did not match "NAG Fortran Compiler":
+Intel(R) Fortran Compiler for applications running on Intel(R) 64, Version 10.1    Build 20080801 Package ID: l_fc_p_10.1.018
+Copyright (C) 1985-2008 Intel Corporation.  All rights reserved.
+
+Error: A license for FCompL could not be obtained (-1,359,2).
+
+Is your license file in the right location and readable?
+The location of your license file should be specified via
+the $INTEL_LICENSE_FILE environment variable.
+
+License file(s) used were (in this order):
+    1.  /sw/intel/fce/10.1.018/licenses/*.lic
+    2.  /opt/intel/licenses
+    3.  /compass/home/jaulmes/intel/licenses
+    4.  /Users/Shared/Library/Application Support/Intel/Licenses
+
+Please visit http://support.intel.com/support/performancetools/support.htm if you require technical assistance.
+
+ifort: error #10052: could not checkout FLEXlm license
+Detecting Fortran compiler ABI info failed to compile with the following output:
+Change Dir: /compass/Shared/Common/IT/projects/aurora/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_e708d/fast && /usr/bin/make  -f CMakeFiles/cmTC_e708d.dir/build.make CMakeFiles/cmTC_e708d.dir/build
+make[1]: Entering directory '/compass/Shared/Common/IT/projects/aurora/CMakeFiles/CMakeTmp'
+Building Fortran object CMakeFiles/cmTC_e708d.dir/CMakeFortranCompilerABI.F.o
+/sw/intel/fce/10.1.018/bin/ifort    -c /sw/cmake/cmake-3.19.6-Linux-x86_64/share/cmake-3.19/Modules/CMakeFortranCompilerABI.F -o CMakeFiles/cmTC_e708d.dir/CMakeFortranCompilerABI.F.o
+
+Error: A license for FCompL could not be obtained (-1,359,2).
+
+Is your license file in the right location and readable?
+The location of your license file should be specified via
+the $INTEL_LICENSE_FILE environment variable.
+
+License file(s) used were (in this order):
+    1.  /sw/intel/fce/10.1.018/licenses/*.lic
+    2.  /opt/intel/licenses
+    3.  /compass/home/jaulmes/intel/licenses
+    4.  /Users/Shared/Library/Application Support/Intel/Licenses
+
+Please visit http://support.intel.com/support/performancetools/support.htm if you require technical assistance.
+
+ifort: error #10052: could not checkout FLEXlm license
+make[1]: *** [CMakeFiles/cmTC_e708d.dir/build.make:85: CMakeFiles/cmTC_e708d.dir/CMakeFortranCompilerABI.F.o] Error 1
+make[1]: Leaving directory '/compass/Shared/Common/IT/projects/aurora/CMakeFiles/CMakeTmp'
+make: *** [Makefile:140: cmTC_e708d/fast] Error 2
+
+
+
+
+Determining if the Fortran compiler works failed with the following output:
+Change Dir: /compass/Shared/Common/IT/projects/aurora/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_9745c/fast && /usr/bin/make  -f CMakeFiles/cmTC_9745c.dir/build.make CMakeFiles/cmTC_9745c.dir/build
+make[1]: Entering directory '/compass/Shared/Common/IT/projects/aurora/CMakeFiles/CMakeTmp'
+Building Fortran object CMakeFiles/cmTC_9745c.dir/testFortranCompiler.f.o
+/sw/intel/fce/10.1.018/bin/ifort    -c /compass/Shared/Common/IT/projects/aurora/CMakeFiles/CMakeTmp/testFortranCompiler.f -o CMakeFiles/cmTC_9745c.dir/testFortranCompiler.f.o
+
+Error: A license for FCompL could not be obtained (-1,359,2).
+
+Is your license file in the right location and readable?
+The location of your license file should be specified via
+the $INTEL_LICENSE_FILE environment variable.
+
+License file(s) used were (in this order):
+    1.  /sw/intel/fce/10.1.018/licenses/*.lic
+    2.  /opt/intel/licenses
+    3.  /compass/home/jaulmes/intel/licenses
+    4.  /Users/Shared/Library/Application Support/Intel/Licenses
+
+Please visit http://support.intel.com/support/performancetools/support.htm if you require technical assistance.
+
+ifort: error #10052: could not checkout FLEXlm license
+make[1]: *** [CMakeFiles/cmTC_9745c.dir/build.make:85: CMakeFiles/cmTC_9745c.dir/testFortranCompiler.f.o] Error 1
+make[1]: Leaving directory '/compass/Shared/Common/IT/projects/aurora/CMakeFiles/CMakeTmp'
+make: *** [Makefile:140: cmTC_9745c/fast] Error 2
+
+
+

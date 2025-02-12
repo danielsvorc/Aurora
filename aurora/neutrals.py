@@ -140,7 +140,7 @@ class ehr5_file:
 
         self.res = {}
         with open(self.filepath) as f:
-            for dummy_int in np.arange(4):
+            for dummy_int in np.arange(0):
                 header = f.readline()
             for field in self.fields:
                 data = np.zeros((15, 60))
