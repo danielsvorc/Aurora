@@ -48,6 +48,8 @@ from . import coords
 import pleque
 from omfit_classes import omfit_eqdsk
 
+import subprocess
+
 thisdir = os.path.dirname(os.path.realpath(__file__))
 cwd = os.getcwd()
 
@@ -251,10 +253,14 @@ def run_kn1d_x(
     Te_decay_len_m=[0.01, 0.01, 0.01],
     Ti_decay_len_m=[0.01, 0.01, 0.01],
     near_far_SOL_boundary_m = 0.0,
-    ne_min_m3=2e6,
-    Te_min_eV=2.0,
-    Ti_min_eV=2.0,
+    ne_min_m3=1e6,
+    Te_min_eV=0.1,
+    Ti_min_eV=0.1,
     plot_kin_profs=False,
+    nv_M=6,
+    nv_A=10,
+    fctr_M=0.2,
+    fctr_A=0.2
 ):
     """Run KN1D for the given parameters. Refer to the KN1D manual for details.
 
@@ -507,8 +513,13 @@ H_P_CX = {H_P_CX:}
 H_P_EL = {H_P_EL:}
 Simple_CX = {Simple_CX:}
 
+nv_M = {nv_M:}
+nv_A = {nv_A:}
+fctr_M = {fctr_M:}
+fctr_A = {fctr_A:}
+
 ; now run KN1D
-kn1d,x,x_lim,xsep,gaugeH2,mu,Ti,Te,dens,vx,lc,dPipe, xh2,nh2,gammaxh2,th2,qxh2_total,nhp,thp,sh,sp, xh,nh,gammaxh,th,qxh_total,nethsource,sion,qh_total,sidewallh,lyman,balmer,gammahlim, debrief=1, truncate=2.e-3, KN1D_dir='/compass/Shared/Common/IT/projects/aurora/aurora/KN1D/', Outdir='{Outdir:}/KN1D/'
+kn1d,x,x_lim,xsep,gaugeH2,mu,Ti,Te,dens,vx,lc,dPipe, xh2,nh2,gammaxh2,th2,qxh2_total,nhp,thp,sh,sp, xh,nh,gammaxh,th,qxh_total,nethsource,sion,qh_total,sidewallh,lyman,balmer,gammahlim, debrief=1, truncate=2.e-3, KN1D_dir='/compass/Shared/Common/IT/projects/kn1d-custom/', Outdir='{Outdir:}/KN1D/', nv_M=nv_M, nv_A=nv_A, fctr_M=fctr_M, fctr_A=fctr_A
 
 ; save result to an IDL .sav file
 save,xh2,nh2,gammaxh2,th2,qxh2_total,nhp,thp,sh,sp, xh,nh,gammaxh,th,qxh_total,nethsource,sion,qh_total,sidewallh,lyman,balmer,gammahlim,filename = "kn1d_out.sav"
@@ -535,6 +546,10 @@ exit
         H_P_EL=int(kn1d["H_P_EL"]),
         Simple_CX=int(kn1d["Simple_CX"]),
         Outdir=cwd,
+        nv_M = int(nv_M),
+        nv_A = int(nv_A),
+        fctr_M = float(fctr_M),
+        fctr_A = float(fctr_A),
     )
 
     # write IDL file
@@ -546,6 +561,13 @@ exit
 
     # Run the script
     os.system(f"cd {cwd}/KN1D; idl kn1d_run_script.pro")
+    '''result = subprocess.run(
+        f"cd {thisdir}/KN1D && idl kn1d_run_script.pro",
+        shell=True,  # Use shell=True to allow shell commands like `cd`
+        check=True,  # Raise an exception if the command fails
+        text=True,   # Ensure output is treated as text
+        capture_output=True  # Capture stdout and stderr for debugging
+    )'''
 
     #### store all KN1D data for postprocessing  #####
     res = {}
@@ -568,9 +590,9 @@ exit
     out["Gamma_i"] = cumtrapz(Sion_interp, kn1d["x"], initial=0.0)
 
     # Effective diffusivity
-    out["D_eff"] = np.abs(
-        out["Gamma_i"] / np.gradient(kn1d["ne_m3"], kn1d["x"])
-    )  # check
+    gradient_ne = np.gradient(np.log(kn1d["ne_m3"]), kn1d["x"])
+    gradient_ne_safe = np.where(gradient_ne == 0, np.inf, gradient_ne)
+    out["D_eff"] = np.abs(out["Gamma_i"] / gradient_ne_safe)
 
 
     # ensure that x bases are all to the same accuracy to avoid issues in interpolation
@@ -581,9 +603,9 @@ exit
     #out["L_ne"] = np.abs(1.0 / np.gradient(np.log(kn1d["ne_m3"]), kn1d["x"]))
     #out["L_Te"] = np.abs(1.0 / np.gradient(np.log(kn1d["Te_eV"]), kn1d["x"]))
     #out["L_Ti"] = np.abs(1.0 / np.gradient(np.log(kn1d["Ti_eV"]), kn1d["x"]))
-    gradient_ne = np.gradient(np.log(kn1d["ne_m3"]), kn1d["x"])
-    gradient_ne_safe = np.where(gradient_ne == 0, np.inf, gradient_ne)  # Replace zeros with infinity
-    out["L_ne"] = np.abs(1.0 / gradient_ne_safe)
+    gradient_log_ne = np.gradient(np.log(kn1d["ne_m3"]), kn1d["x"])
+    gradient_log_ne_safe = np.where(gradient_log_ne == 0, np.inf, gradient_log_ne)  # Replace zeros with infinity
+    out["L_ne"] = np.abs(1.0 / gradient_log_ne_safe)
 
     gradient_Te = np.gradient(np.log(kn1d["Te_eV"]), kn1d["x"])
     gradient_Te_safe = np.where(gradient_Te == 0, np.inf, gradient_Te)  # Replace zeros with infinity
@@ -651,25 +673,28 @@ exit
     out_profs["rhop"] = np.linspace(np.min(_rhop), np.max(_rhop), 200)
     out_profs["x"] = coords.rad_coord_transform(out_profs["rhop"], "rhop", "Rmid", geqdsk)
 
+    M1_safe = np.where(M1 > 0, M1, np.nan)
     out_profs["m0"] = np.exp(
-        interp1d(_rhop, np.log(M1[::-1]), bounds_error=False, fill_value="extrapolate")(
+        interp1d(_rhop, np.log(M1_safe[::-1]), bounds_error=False, fill_value="extrapolate")(
             out_profs["rhop"]
         )
     )
-
+    N1_safe = np.where(N1 > 0, N1, np.nan)
     out_profs["n0"] = np.exp(
-        interp1d(_rhop, np.log(N1[::-1]), bounds_error=False, fill_value="extrapolate")(
+        interp1d(_rhop, np.log(N1_safe[::-1]), bounds_error=False, fill_value="extrapolate")(
             out_profs["rhop"]
         )
     )
+    N2_safe = np.where(out["N2"] > 0, out["N2"], np.nan)
     out_profs["n0_n2"] = np.exp(
         interp1d(
-            _rhop, np.log(out["N2"][::-1]), bounds_error=False, fill_value="extrapolate"
+            _rhop, np.log(N2_safe[::-1]), bounds_error=False, fill_value="extrapolate"
         )(out_profs["rhop"])
     )
+    N3_safe = np.where(out["N3"] > 0, out["N3"], np.nan)
     out_profs["n0_n3"] = np.exp(
         interp1d(
-            _rhop, np.log(out["N3"][::-1]), bounds_error=False, fill_value="extrapolate"
+            _rhop, np.log(N3_safe[::-1]), bounds_error=False, fill_value="extrapolate"
         )(out_profs["rhop"])
     )
 
@@ -677,18 +702,20 @@ exit
     _rhop_emiss = coords.rad_coord_transform(
         wall_m - out["xh"][::-1], "rmid", "rhop", geqdsk
     )
+    lyman_safe = np.where(out["lyman"] > 0, out["lyman"], np.nan)
     out_profs["lyman"] = np.exp(
         interp1d(
             _rhop_emiss,
-            np.log(out["lyman"][::-1]),
+            np.log(lyman_safe[::-1]),
             bounds_error=False,
             fill_value="extrapolate",
         )(out_profs["rhop"])
     )
+    balmer_safe = np.where(out["balmer"] > 0, out["balmer"], np.nan)
     out_profs["balmer"] = np.exp(
         interp1d(
             _rhop_emiss,
-            np.log(out["balmer"][::-1]),
+            np.log(balmer_safe[::-1]),
             bounds_error=False,
             fill_value="extrapolate",
         )(out_profs["rhop"])
