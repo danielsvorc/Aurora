@@ -37,10 +37,11 @@ import numpy as np
 import os
 import scipy.io
 from scipy.integrate import cumtrapz
-from scipy.interpolate import interp1d
 import matplotlib.pyplot as plt
 from scipy.constants import e, h, c as c_light, Rydberg
 import copy
+
+import time
 
 from . import neutrals
 from . import coords
@@ -51,7 +52,6 @@ from omfit_classes import omfit_eqdsk
 import subprocess
 
 thisdir = os.path.dirname(os.path.realpath(__file__))
-cwd = os.getcwd()
 
 '''
 CUSTOM FUNCTIONS
@@ -84,8 +84,8 @@ def _setup_kin_profs_x(
     Ti_decay_len_m=[0.01, 0.01, 0.01],
     near_far_SOL_boundary_m = 0.0,
     ne_min_m3=1e12,
-    Te_min_eV=1.0,
-    Ti_min_eV=1.0
+    Te_min_eV=0.1,
+    Ti_min_eV=0.1
 ):
     """Private method to set up kinetic profiles to the format required by
     :py:func:`~aurora.kn1d.run_kn1d`. Refer to this function for descriptions of inputs.
@@ -235,13 +235,13 @@ def run_kn1d_x(
     ne_m3,
     Te_eV,
     Ti_eV,
-    eq,
     p_H2_mTorr,
     clen_divertor_m,
     clen_limiter_m,
     sep_m,
     lim_m,
     wall_m,
+    psi_n=None,
     innermost_x_m=1.0,
     mu=2.0,
     pipe_diag_m=0.0,
@@ -254,13 +254,14 @@ def run_kn1d_x(
     Ti_decay_len_m=[0.01, 0.01, 0.01],
     near_far_SOL_boundary_m = 0.0,
     ne_min_m3=1e6,
-    Te_min_eV=0.1,
-    Ti_min_eV=0.1,
+    Te_min_eV=0.01,
+    Ti_min_eV=0.01,
     plot_kin_profs=False,
     nv_M=6,
     nv_A=10,
     fctr_M=0.2,
-    fctr_A=0.2
+    fctr_A=0.2,
+    step_size=1,
 ):
     """Run KN1D for the given parameters. Refer to the KN1D manual for details.
 
@@ -348,7 +349,7 @@ def run_kn1d_x(
     -----
     For an example application, see the examples/aurora_kn1d.py script.
     """
-
+    t = time.time()
     if "IDL_STARTUP" not in os.environ and "IDL_HOME" not in os.environ:
         raise ValueError(
             "An IDL installation does not seem to be available! KN1D cannot be run."
@@ -360,7 +361,7 @@ def run_kn1d_x(
     if "KN1D" not in os.listdir(thisdir):
         # if 'KN1D_DIR' not in os.environ:
         # git clone the KN1D repository
-        os.system(f"git clone https://github.com/fsciortino/kn1d {thisdir}/KN1D")
+        os.system(f"git clone https://github.com/danielsvorc/Aurora {thisdir}/KN1D")
 
         os.chdir(f"{thisdir}/KN1D")
         # compile fortran libraries
@@ -488,69 +489,66 @@ def run_kn1d_x(
 
     # Create IDL script to run KN1D
     print("Creating IDL script to run KN1D...")
-    idl_cmd = """
-; Input data for KN1D run
-x = {x:}
-x_lim = {x_lim:.5f}
-xsep = {xsep:.5f}
-gaugeH2 = {gaugeH2:}
-mu = {mu:}
-Ti = {Ti:}
-Te = {Te:}
-dens = {ne:}
-vx = {vx:}
-lc = {lc:}
-dPipe = {dPipe:}
+    idl_vars = {
+        "x" : idl_array(kn1d["x"], num),
+        "x_lim" : kn1d["xlim"],
+        "xsep" : kn1d["xsep"],
+        "gaugeH2" : kn1d["p_H2_mTorr"],
+        "mu" : kn1d["mu"],
+        "Ti" : idl_array(kn1d["Ti_eV"], num),
+        "Te" : idl_array(kn1d["Te_eV"], num),
+        "ne" : idl_array(kn1d["ne_m3"], num),
+        "vx" : idl_array(kn1d["vx"], num),
+        "lc" : idl_array(kn1d["lc"], num),
+        "dPipe" : idl_array(kn1d["dPipe"], num),
+        "H2_H2_EL" : int(kn1d["H2_H2_EL"]),
+        "H2_P_EL" : int(kn1d["H2_P_EL"]),
+        "H2_H_EL" : int(kn1d["H2_H_EL"]),
+        "H_H_EL" : int(kn1d["H_H_EL"]),
+        "H_P_CX" : int(kn1d["H_P_CX"]),
+        "H_P_EL" : int(kn1d["H_P_EL"]),
+        "Simple_CX" : int(kn1d["Simple_CX"]),
+        "Outdir" : cwd,
+        "nv_M" : int(nv_M),
+        "nv_A" : int(nv_A),
+        "fctr_M" : float(fctr_M),
+        "fctr_A" : float(fctr_A),
+        "step_size" : float(step_size),
+    }
+    idl_cmd = f"""
+    ; Input data for KN1D run
+    x = {idl_vars["x"]}
+    x_lim = {idl_vars["x_lim"]:.5f}
+    xsep = {idl_vars["xsep"]:.5f}
+    gaugeH2 = {idl_vars["gaugeH2"]:}
+    mu = {idl_vars["mu"]:}
+    Ti = {idl_vars["Ti"]:}
+    Te = {idl_vars["Te"]:}
+    dens = {idl_vars["ne"]:}
+    vx = {idl_vars["vx"]:}
+    lc = {idl_vars["lc"]:}
+    dPipe = {idl_vars["dPipe"]:}
 
-; collisions options are set via a common block
-common KN1D_collisions,H2_H2_EL,H2_P_EL,H2_H_EL,H2_HP_CX,H_H_EL,H_P_EL,H_P_CX,Simple_CX
+    ; collisions options are set via a common block
+    common KN1D_collisions,H2_H2_EL,H2_P_EL,H2_H_EL,H2_HP_CX,H_H_EL,H_P_EL,H_P_CX,Simple_CX
 
-H2_H2_EL= {H2_H2_EL:}
-H2_P_EL = {H2_P_EL:}
-H2_H_EL = {H2_H_EL:}
-H_H_EL= {H_H_EL:}
-H_P_CX = {H_P_CX:}
-H_P_EL = {H_P_EL:}
-Simple_CX = {Simple_CX:}
+    H2_H2_EL= {idl_vars["H2_H2_EL"]:}
+    H2_P_EL = {idl_vars["H2_P_EL"]:}
+    H2_H_EL = {idl_vars["H2_H_EL"]:}
+    H_H_EL= {idl_vars["H_H_EL"]:}
+    H_P_CX = {idl_vars["H_P_CX"]:}
+    H_P_EL = {idl_vars["H_P_EL"]:}
+    Simple_CX = {idl_vars["Simple_CX"]:}
 
-nv_M = {nv_M:}
-nv_A = {nv_A:}
-fctr_M = {fctr_M:}
-fctr_A = {fctr_A:}
+    ; now run KN1D
+    kn1d,x,x_lim,xsep,gaugeH2,mu,Ti,Te,dens,vx,lc,dPipe, xh2,nh2,gammaxh2,th2,qxh2_total,nhp,thp,sh,sp, xh,nh,gammaxh,th,qxh_total,nethsource,sion,qh_total,sidewallh,lyman,balmer,gammahlim, debrief=1, truncate=2.e-3, KN1D_dir='/compass/Shared/Common/IT/projects/kn1d-custom/', Outdir='{idl_vars["Outdir"]:}/KN1D/', nv_M={idl_vars["nv_M"]}, nv_A={idl_vars["nv_A"]}, fctr_M={idl_vars["fctr_M"]}, fctr_A={idl_vars["fctr_A"]},step_size={idl_vars["step_size"]}
 
-; now run KN1D
-kn1d,x,x_lim,xsep,gaugeH2,mu,Ti,Te,dens,vx,lc,dPipe, xh2,nh2,gammaxh2,th2,qxh2_total,nhp,thp,sh,sp, xh,nh,gammaxh,th,qxh_total,nethsource,sion,qh_total,sidewallh,lyman,balmer,gammahlim, debrief=1, truncate=2.e-3, KN1D_dir='/compass/Shared/Common/IT/projects/kn1d-custom/', Outdir='{Outdir:}/KN1D/', nv_M=nv_M, nv_A=nv_A, fctr_M=fctr_M, fctr_A=fctr_A
+    ; save result to an IDL .sav file
+    save,xh2,nh2,gammaxh2,th2,qxh2_total,nhp,thp,sh,sp, xh,nh,gammaxh,th,qxh_total,nethsource,sion,qh_total,sidewallh,lyman,balmer,gammahlim,filename = "kn1d_out.sav"
 
-; save result to an IDL .sav file
-save,xh2,nh2,gammaxh2,th2,qxh2_total,nhp,thp,sh,sp, xh,nh,gammaxh,th,qxh_total,nethsource,sion,qh_total,sidewallh,lyman,balmer,gammahlim,filename = "kn1d_out.sav"
+    exit
 
-exit
-
-    """.format(
-        x=idl_array(kn1d["x"], num),
-        x_lim=kn1d["xlim"],
-        xsep=kn1d["xsep"],
-        gaugeH2=kn1d["p_H2_mTorr"],
-        mu=kn1d["mu"],
-        Ti=idl_array(kn1d["Ti_eV"], num),
-        Te=idl_array(kn1d["Te_eV"], num),
-        ne=idl_array(kn1d["ne_m3"], num),
-        vx=idl_array(kn1d["vx"], num),
-        lc=idl_array(kn1d["lc"], num),
-        dPipe=idl_array(kn1d["dPipe"], num),
-        H2_H2_EL=int(kn1d["H2_H2_EL"]),
-        H2_P_EL=int(kn1d["H2_P_EL"]),
-        H2_H_EL=int(kn1d["H2_H_EL"]),
-        H_H_EL=int(kn1d["H_H_EL"]),
-        H_P_CX=int(kn1d["H_P_CX"]),
-        H_P_EL=int(kn1d["H_P_EL"]),
-        Simple_CX=int(kn1d["Simple_CX"]),
-        Outdir=cwd,
-        nv_M = int(nv_M),
-        nv_A = int(nv_A),
-        fctr_M = float(fctr_M),
-        fctr_A = float(fctr_A),
-    )
+    """
 
     # write IDL file
     final_directory = os.path.join(cwd, r'KN1D')
@@ -604,15 +602,15 @@ exit
     #out["L_Te"] = np.abs(1.0 / np.gradient(np.log(kn1d["Te_eV"]), kn1d["x"]))
     #out["L_Ti"] = np.abs(1.0 / np.gradient(np.log(kn1d["Ti_eV"]), kn1d["x"]))
     gradient_log_ne = np.gradient(np.log(kn1d["ne_m3"]), kn1d["x"])
-    gradient_log_ne_safe = np.where(gradient_log_ne == 0, np.inf, gradient_log_ne)  # Replace zeros with infinity
+    gradient_log_ne_safe = np.where(gradient_log_ne == 0, np.NaN, gradient_log_ne)  # Replace zeros with infinity
     out["L_ne"] = np.abs(1.0 / gradient_log_ne_safe)
 
     gradient_Te = np.gradient(np.log(kn1d["Te_eV"]), kn1d["x"])
-    gradient_Te_safe = np.where(gradient_Te == 0, np.inf, gradient_Te)  # Replace zeros with infinity
+    gradient_Te_safe = np.where(gradient_Te == 0, np.NaN, gradient_Te)  # Replace zeros with infinity
     out["L_Te"] = np.abs(1.0 / gradient_Te_safe)
 
     gradient_Ti = np.gradient(np.log(kn1d["Ti_eV"]), kn1d["x"])
-    gradient_Ti_safe = np.where(gradient_Ti == 0, np.inf, gradient_Ti)  # Replace zeros with infinity
+    gradient_Ti_safe = np.where(gradient_Ti == 0, np.NaN, gradient_Ti)  # Replace zeros with infinity
     out["L_Ti"] = np.abs(1.0 / gradient_Ti_safe)
 
 
@@ -661,15 +659,67 @@ exit
 
     #################################
     # Store neutral density profiles in a format that can be used for integrated modeling
-    out_profs = res["kn1d_profs"] = {}
+    wrapper_input = res["wrapper_input"] = {}
 
-    eq.to_geqdsk("temp.geqdsk")
-    geqdsk = omfit_eqdsk.OMFITgeqdsk("temp.geqdsk")
+    wrapper_input['x'] = x
+    wrapper_input['psi_n'] = psi_n
 
-    # save profiles on (inverted) grid extending all the way to the axis (extrapolating)
-    _rhop = coords.rad_coord_transform(
-        wall_m - kn1d["x"][::-1], "Rmid", "rhop", geqdsk
-    )
+    wrapper_input['ne_m3'] = ne_m3
+    wrapper_input['Te_eV'] = Te_eV
+    wrapper_input['Ti_eV'] = Ti_eV
+
+    wrapper_input['p_H2_mTorr'] = p_H2_mTorr
+    wrapper_input['p_H2_Pa'] = mTorr_to_pa(p_H2_mTorr)
+
+    wrapper_input['clen_divertor_m'] = clen_divertor_m
+    wrapper_input['clen_limiter_m'] = clen_limiter_m
+
+    wrapper_input['sep_m'] = sep_m
+    wrapper_input['lim_m'] = lim_m
+    wrapper_input['wall_m'] = wall_m
+    wrapper_input['innermost_x_m'] = innermost_x_m
+
+    wrapper_input['mu'] = mu
+    wrapper_input['pipe_diag_m'] = pipe_diag_m
+    wrapper_input['collisions'] = collisions
+    wrapper_input['near_far_SOL_boundary_m'] = near_far_SOL_boundary_m
+    wrapper_input['ne_min_m3'] = ne_min_m3
+    wrapper_input['Te_min_eV'] = Te_min_eV
+    wrapper_input['Ti_min_eV'] = Ti_min_eV
+    wrapper_input['nv_M'] = nv_M
+    wrapper_input['nv_A'] = nv_A
+    wrapper_input['fctr_M'] = fctr_M
+    wrapper_input['fctr_A'] = fctr_A
+
+    wrapper_output = res["wrapper_output"] = {}
+
+    wrapper_output['x'] = x
+    wrapper_output['psi_n'] = psi_n
+    
+    wrapper_output['T_H'] = interp1d(out['rwall_m']-out['xh'], out['th'], kind="linear", fill_value=np.NaN, bounds_error=False)(x)
+    wrapper_output['T_H2'] = interp1d(out['rwall_m']-out['xh2'], out['th2'], kind="linear", fill_value=np.NaN, bounds_error=False)(x)
+
+    wrapper_output['n_H'] = interp1d(out['rwall_m']-out['xh'], out['nh'], kind="linear", fill_value=np.NaN, bounds_error=False)(x)
+    wrapper_output['n_H2'] = interp1d(out['rwall_m']-out['xh2'], out['nh2'], kind="linear", fill_value=np.NaN, bounds_error=False)(x)
+
+    wrapper_output['source_atom'] = interp1d(out['rwall_m']-out['xh2'], out['sh'], kind="linear", fill_value=np.NaN, bounds_error=False)(x)
+    wrapper_output['source_ion'] = interp1d(out['rwall_m']-out['xh2'], out['sp'], kind="linear", fill_value=np.NaN, bounds_error=False)(x)
+    wrapper_output['Sion'] = interp1d(out['rwall_m']-out['xh'], out['Sion'], kind="linear", fill_value=np.NaN, bounds_error=False)(x)
+
+    wrapper_output['balmer'] = interp1d(out['rwall_m']-out['xh'], out['balmer'], kind="linear", fill_value=np.NaN, bounds_error=False)(x)
+    wrapper_output['lyman'] = interp1d(out['rwall_m']-out['xh'], out['lyman'], kind="linear", fill_value=np.NaN, bounds_error=False)(x)
+
+    wrapper_output['gammaxh'] = interp1d(out['rwall_m']-out['xh'], out['gammaxh'], kind="linear", fill_value=np.NaN, bounds_error=False)(x)
+    wrapper_output['gammaxh2'] = interp1d(out['rwall_m']-out['xh2'], out['gammaxh2'], kind="linear", fill_value=np.NaN, bounds_error=False)(x)
+
+    wrapper_output['QH_total'] = interp1d(out['rwall_m']-out['xh'], out['QH_total'], kind="linear", fill_value=np.NaN, bounds_error=False)(x)
+
+    
+
+    '''# save profiles on (inverted) grid extending all the way to the axis (extrapolating)
+    #_rhop = coords.rad_coord_transform(
+    #    wall_m - kn1d["x"][::-1], "Rmid", "rhop", geqdsk
+    #)
     out_profs["rhop"] = np.linspace(np.min(_rhop), np.max(_rhop), 200)
     out_profs["x"] = coords.rad_coord_transform(out_profs["rhop"], "rhop", "Rmid", geqdsk)
 
@@ -702,7 +752,8 @@ exit
     _rhop_emiss = coords.rad_coord_transform(
         wall_m - out["xh"][::-1], "rmid", "rhop", geqdsk
     )
-    lyman_safe = np.where(out["lyman"] > 0, out["lyman"], np.nan)
+    lyman_safe = np.where((out["lyman"] > 0) & (out["lyman"] < 1e31), out["lyman"], np.nan)
+    out['lyman'] = lyman_safe
     out_profs["lyman"] = np.exp(
         interp1d(
             _rhop_emiss,
@@ -711,7 +762,8 @@ exit
             fill_value="extrapolate",
         )(out_profs["rhop"])
     )
-    balmer_safe = np.where(out["balmer"] > 0, out["balmer"], np.nan)
+    balmer_safe = np.where((out["balmer"] > 0) & (out['balmer']<1e31), out["balmer"], np.nan)
+    out['balmer'] = balmer_safe
     out_profs["balmer"] = np.exp(
         interp1d(
             _rhop_emiss,
@@ -719,8 +771,8 @@ exit
             bounds_error=False,
             fill_value="extrapolate",
         )(out_profs["rhop"])
-    )
-
+    )'''
+    print("Finished in: ", time.time()-t)
     return res
 
 def plot_input_kin_prof_x(
@@ -778,38 +830,54 @@ def plot_overview_x(res):
 
     fig, ax = plt.subplots(2, 2, figsize=(10, 10))
     ax[0,0].set_title("Temperature")
-    ax[0,0].plot(res["out"]["rwall_m"]-res["kn1d_input"]["x"], res["kn1d_input"]['te'], color="gray", linestyle="--", label="$T_e$")
-    ax[0,0].plot(res["out"]["rwall_m"]-res["kn1d_input"]["x"], res["kn1d_input"]['ti'], color="gray", linestyle="-.", label="$T_i$")
-    ax[0,0].plot(res["out"]["rwall_m"]-res["out"]["xh"], res["out"]['th'], color="red", linestyle="-", label="$T_D$")
-    ax[0,0].plot(res["out"]["rwall_m"]-res["out"]["xh2"], res["out"]['th2'], color="blue", linestyle="-", label="$T_{D2}$")
-    ax[0,0].grid()
-    ax[0,0].legend()
+    ax[0,0].plot(res["wrapper_input"]["x"], res["wrapper_input"]['Te_eV'], color="gray", linestyle="--", label="$T_e$")
+    ax[0,0].plot(res["wrapper_input"]["x"], res["wrapper_input"]['Ti_eV'], color="gray", linestyle="-.", label="$T_i$")
+    ax[0,0].plot(res["wrapper_output"]["x"], res["wrapper_output"]['T_H'], color="red", linestyle="-", label="$T_D$")
+    ax[0,0].plot(res["wrapper_output"]["x"], res["wrapper_output"]['T_H2'], color="blue", linestyle="-", label="$T_{D2}$")
 
-    ax[0,1].set_title("Balmer radiation")
+    ax[0,1].set_title("Radiation")
     #ax[0,1].plot(res["out"]["rwall_m"]-res["kn1d_input"]["x"], res["kn1d_input"]['n'], color="gray", linestyle="--", label="$n_e$")
     #ax[0,1].plot(res["out"]["rwall_m"]-res["out"]["xh"], res["out"]['nh']*1e6, color="red", linestyle="-", label="$n_D$")
     #ax[0,1].plot(res["out"]["rwall_m"]-res["out"]["xh2"], res["out"]['nh2']*1e6, color="blue", linestyle="-", label="$n_{D2}$")
-    ax[0,1].plot(res["out"]["rwall_m"]-res["out"]["xh"], res["out"]["balmer"], "-", color="magenta", label="KN1D (JH)")
-    #ax[1,0].set_xlim(res["out"]["rwall_m"]-np.max(res["out"]["xh"]),res["out"]["rwall_m"]-np.min(res["out"]["xh"]))
-    ax[0,1].grid()
+    mask = res["wrapper_output"]["balmer"]<1e30
+    x = res["wrapper_output"]["x"][mask]
+    balmer = res["wrapper_output"]["balmer"][mask]
 
-    ax[0,1].legend()
+    mask = res["wrapper_output"]["lyman"]<1e30
+    x = res["wrapper_output"]["x"][mask]
+    lyman = res["wrapper_output"]["lyman"][mask]
+
+    ax[0,1].plot(x, balmer, "-", color="magenta", label="balmer (JH)")
+    ax[0,1].plot(x, lyman, "-", color="purple", label="lyman (JH)")
+    #ax[0,1].plot(res["out"]["rwall_m"]-res["out"]["xh"], res["out"]["lyman"], "-", color="purple", label="lyman (JH)")
+    #ax[1,0].set_xlim(res["out"]["rwall_m"]-np.max(res["out"]["xh"]),res["out"]["rwall_m"]-np.min(res["out"]["xh"]))
 
     ax[1,0].set_title("Source")
     #ax[1,0].plot(res["out"]["rwall_m"]-res["out"]["xh"], res["out"]['sion'], color="red", linestyle="-", label="Atomic ionization rate")
-    ax[1,0].plot(res["out"]["rwall_m"]-res["out"]["xH2"], res["out"]["sh"], color="red", label="Atomic source")
-    ax[1,0].plot(res["out"]["rwall_m"]-res["out"]["xH2"], res["out"]["sp"], color="blue", label="Ion source")
-    ax[1,0].set_xlim(res["out"]["rwall_m"]-np.max(res["out"]["xh"]),res["out"]["rwall_m"]-np.min(res["out"]["xh"]))
-    ax[1,0].grid()
-    ax[1,0].legend()
+    ax[1,0].plot(res["wrapper_output"]["x"], res["wrapper_output"]["source_atom"], color="red", label="Atomic source")
+    ax[1,0].plot(res["wrapper_output"]["x"], res["wrapper_output"]["source_ion"], color="blue", label="Ion source?")
+    ax[1,0].plot(res["wrapper_output"]["x"], res["wrapper_output"]["Sion"], color="green", label="Ion source")
+    #ax[1,0].set_xlim(res["out"]["rwall_m"]-np.max(res["out"]["xh"]),res["out"]["rwall_m"]-np.min(res["out"]["xh"]))
 
     ax[1,1].set_title("log(Density)")
-    ax[1,1].plot(res["out"]["rwall_m"]-res["kn1d_input"]["x"], res["kn1d_input"]['n'], color="gray", linestyle="--", label="$n_e$")
-    ax[1,1].plot(res["out"]["rwall_m"]-res["out"]["xh"], res["out"]['nh']*1e6, color="red", linestyle="-", label="$n_D$")
-    ax[1,1].plot(res["out"]["rwall_m"]-res["out"]["xh2"], res["out"]['nh2']*1e6, color="blue", linestyle="-", label="$n_{D2}$")
-    ax[1,1].grid()
+    ax[1,1].plot(res["wrapper_input"]["x"], res["wrapper_input"]['ne_m3'], color="gray", linestyle="--", label="$n_e$")
+    ax[1,1].plot(res["wrapper_output"]["x"], res["wrapper_output"]['n_H'], color="red", linestyle="-", label="$n_D$")
+    ax[1,1].plot(res["wrapper_output"]["x"], res["wrapper_output"]['n_H2'], color="blue", linestyle="-", label="$n_{D2}$")
     ax[1,1].set_yscale('log')
-    ax[1,1].legend()
+    ax[1,1].set_ylim(max(1e10,min(np.min(res["wrapper_input"]['ne_m3']),
+                        np.min(res["wrapper_output"]['n_H']),
+                        np.min(res["wrapper_output"]['n_H2']))/2)
+                    , max(np.max(res["wrapper_input"]['ne_m3']),
+                        np.max(res["wrapper_output"]['n_H']),
+                        np.max(res["wrapper_output"]['n_H2']))*2)
+
+
+    for a in ax.flatten():
+        a.grid()
+        a.legend()
+        a.set_xlim(res['wrapper_input']['sep_m']-res['wrapper_input']['innermost_x_m'], res['wrapper_input']['wall_m'])
+        a.axvline(res['wrapper_input']['sep_m'], linestyle="--", color="gray")
+        a.axvline(res['wrapper_input']['lim_m'], linestyle="--", color="gray")
 
 '''
 END OF CUSTOM FUNCTIONS
@@ -1115,7 +1183,7 @@ def run_kn1d(
     if "KN1D" not in os.listdir(thisdir):
         # if 'KN1D_DIR' not in os.environ:
         # git clone the KN1D repository
-        os.system(f"git clone https://github.com/fsciortino/kn1d {thisdir}/KN1D")
+        os.system(f"git clone https://github.com/danielsvorc/Aurora {thisdir}/KN1D")
 
         os.chdir(f"{thisdir}/KN1D")
         # compile fortran libraries
