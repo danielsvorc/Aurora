@@ -46,7 +46,7 @@ import time
 from . import neutrals
 from . import coords
 
-import pleque
+import pleque # type: ignore
 from omfit_classes import omfit_eqdsk
 
 import subprocess
@@ -361,13 +361,14 @@ def run_kn1d_x(
     if "KN1D" not in os.listdir(thisdir):
         # if 'KN1D_DIR' not in os.environ:
         # git clone the KN1D repository
-        os.system(f"git clone https://github.com/danielsvorc/Aurora {thisdir}/KN1D")
+        #os.system(f"git clone https://repo.tok.ipp.cas.cz/svorc/kn1d-custom {thisdir}/KN1D")
 
-        os.chdir(f"{thisdir}/KN1D")
+        #os.chdir(f"{thisdir}/KN1D")
         # compile fortran libraries
-        print(f"export KN1D_DIR={thisdir}/KN1D; make clean; make")
-        os.system(f"export KN1D_DIR={thisdir}/KN1D; make clean; make")
-        os.chdir(cwd)
+        #print(f"export KN1D_DIR={thisdir}/KN1D; make clean; make")
+        pass
+        #os.system(f"export KN1D_DIR={thisdir}/KN1D; make clean; make")
+        #os.chdir(cwd)
         # else:
         # copy KN1D directory locally
         # shutil.copytree(os.environ['KN1D_DIR'],thisdir+'/KN1D')
@@ -1183,13 +1184,14 @@ def run_kn1d(
     if "KN1D" not in os.listdir(thisdir):
         # if 'KN1D_DIR' not in os.environ:
         # git clone the KN1D repository
-        os.system(f"git clone https://github.com/danielsvorc/Aurora {thisdir}/KN1D")
+        #os.system(f"git clone https://repo.tok.ipp.cas.cz/svorc/kn1d-custom {thisdir}/KN1D")
 
-        os.chdir(f"{thisdir}/KN1D")
+        #os.chdir(f"{thisdir}/KN1D")
         # compile fortran libraries
-        print(f"export KN1D_DIR={thisdir}/KN1D; make clean; make")
-        os.system(f"export KN1D_DIR={thisdir}/KN1D; make clean; make")
-        os.chdir(cwd)
+        #print(f"export KN1D_DIR={thisdir}/KN1D; make clean; make")
+        #os.system(f"export KN1D_DIR={thisdir}/KN1D; make clean; make")
+        #os.chdir(cwd)
+        pass
         # else:
         # copy KN1D directory locally
         # shutil.copytree(os.environ['KN1D_DIR'],thisdir+'/KN1D')
