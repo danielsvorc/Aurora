@@ -58,10 +58,10 @@ CUSTOM FUNCTIONS
 '''
 
 def pa_to_mTorr(p):
-    return p/133.32/1000
+    return p/133.32*1000
 
 def mTorr_to_pa(p):
-    return p*1000*133.32
+    return p/1000*133.32
 
 def output_postprocessing():
     return
@@ -235,7 +235,7 @@ def run_kn1d_x(
     ne_m3,
     Te_eV,
     Ti_eV,
-    p_H2_mTorr,
+    p_H2_Pa,
     clen_divertor_m,
     clen_limiter_m,
     sep_m,
@@ -257,11 +257,8 @@ def run_kn1d_x(
     Te_min_eV=0.01,
     Ti_min_eV=0.01,
     plot_kin_profs=False,
-    nv_M=6,
-    nv_A=10,
-    fctr_M=0.2,
-    fctr_A=0.2,
-    step_size=1,
+    KN1D_path='/compass/Shared/Common/IT/projects/kn1d-custom/',
+    truncate=1e-3
 ):
     """Run KN1D for the given parameters. Refer to the KN1D manual for details.
 
@@ -349,6 +346,10 @@ def run_kn1d_x(
     -----
     For an example application, see the examples/aurora_kn1d.py script.
     """
+    #convert p_H2_Pa to mTorr to input to KN1D
+    p_H2_mTorr = pa_to_mTorr(p_H2_Pa)
+    if KN1D_path != None:
+        os.environ['IDL_PATH']=KN1D_path
     t = time.time()
     if "IDL_STARTUP" not in os.environ and "IDL_HOME" not in os.environ:
         raise ValueError(
@@ -489,6 +490,8 @@ def run_kn1d_x(
     kn1d["vx"] = round_arr(vx, num, float)
 
     # Create IDL script to run KN1D
+    # KN1D_code_path=os.getenv("IDL_PATH")+"/"
+    print("KN1D_code_path=",KN1D_path)
     print("Creating IDL script to run KN1D...")
     idl_vars = {
         "x" : idl_array(kn1d["x"], num),
@@ -510,11 +513,8 @@ def run_kn1d_x(
         "H_P_EL" : int(kn1d["H_P_EL"]),
         "Simple_CX" : int(kn1d["Simple_CX"]),
         "Outdir" : cwd,
-        "nv_M" : int(nv_M),
-        "nv_A" : int(nv_A),
-        "fctr_M" : float(fctr_M),
-        "fctr_A" : float(fctr_A),
-        "step_size" : float(step_size),
+        "KN1D_path" : KN1D_path,
+        "truncate" : truncate,
     }
     idl_cmd = f"""
     ; Input data for KN1D run
@@ -542,7 +542,7 @@ def run_kn1d_x(
     Simple_CX = {idl_vars["Simple_CX"]:}
 
     ; now run KN1D
-    kn1d,x,x_lim,xsep,gaugeH2,mu,Ti,Te,dens,vx,lc,dPipe, xh2,nh2,gammaxh2,th2,qxh2_total,nhp,thp,sh,sp, xh,nh,gammaxh,th,qxh_total,nethsource,sion,qh_total,sidewallh,lyman,balmer,gammahlim, debrief=1, truncate=2.e-3, KN1D_dir='/compass/Shared/Common/IT/projects/kn1d-custom/', Outdir='{idl_vars["Outdir"]:}/KN1D/', nv_M={idl_vars["nv_M"]}, nv_A={idl_vars["nv_A"]}, fctr_M={idl_vars["fctr_M"]}, fctr_A={idl_vars["fctr_A"]},step_size={idl_vars["step_size"]}
+    kn1d,x,x_lim,xsep,gaugeH2,mu,Ti,Te,dens,vx,lc,dPipe, xh2,nh2,gammaxh2,th2,qxh2_total,nhp,thp,sh,sp, xh,nh,gammaxh,th,qxh_total,nethsource,sion,qh_total,sidewallh,lyman,balmer,gammahlim, debrief=1, truncate={idl_vars["truncate"]}, KN1D_dir='{idl_vars["KN1D_path"]}', Outdir='{idl_vars["Outdir"]:}/KN1D/'
 
     ; save result to an IDL .sav file
     save,xh2,nh2,gammaxh2,th2,qxh2_total,nhp,thp,sh,sp, xh,nh,gammaxh,th,qxh_total,nethsource,sion,qh_total,sidewallh,lyman,balmer,gammahlim,filename = "kn1d_out.sav"
@@ -662,15 +662,15 @@ def run_kn1d_x(
     # Store neutral density profiles in a format that can be used for integrated modeling
     wrapper_input = res["wrapper_input"] = {}
 
-    wrapper_input['x'] = x
+    wrapper_input['x'] = x_to_wall_m
     wrapper_input['psi_n'] = psi_n
 
-    wrapper_input['ne_m3'] = ne_m3
-    wrapper_input['Te_eV'] = Te_eV
-    wrapper_input['Ti_eV'] = Ti_eV
+    wrapper_input['ne_m3'] = _ne_m3
+    wrapper_input['Te_eV'] = _Te_eV
+    wrapper_input['Ti_eV'] = _Ti_eV
 
     wrapper_input['p_H2_mTorr'] = p_H2_mTorr
-    wrapper_input['p_H2_Pa'] = mTorr_to_pa(p_H2_mTorr)
+    wrapper_input['p_H2_Pa'] = p_H2_Pa
 
     wrapper_input['clen_divertor_m'] = clen_divertor_m
     wrapper_input['clen_limiter_m'] = clen_limiter_m
@@ -687,33 +687,33 @@ def run_kn1d_x(
     wrapper_input['ne_min_m3'] = ne_min_m3
     wrapper_input['Te_min_eV'] = Te_min_eV
     wrapper_input['Ti_min_eV'] = Ti_min_eV
-    wrapper_input['nv_M'] = nv_M
-    wrapper_input['nv_A'] = nv_A
-    wrapper_input['fctr_M'] = fctr_M
-    wrapper_input['fctr_A'] = fctr_A
 
     wrapper_output = res["wrapper_output"] = {}
 
-    wrapper_output['x'] = x
+    wrapper_output['x'] = x_to_wall_m
     wrapper_output['psi_n'] = psi_n
     
-    wrapper_output['T_H'] = interp1d(out['rwall_m']-out['xh'], out['th'], kind="linear", fill_value=np.NaN, bounds_error=False)(x)
-    wrapper_output['T_H2'] = interp1d(out['rwall_m']-out['xh2'], out['th2'], kind="linear", fill_value=np.NaN, bounds_error=False)(x)
+    wrapper_output['T_H'] = interp1d(out['rwall_m']-out['xh'], out['th'], kind="linear", fill_value=np.NaN, bounds_error=False)(x_to_wall_m)
+    wrapper_output['T_H2'] = interp1d(out['rwall_m']-out['xh2'], out['th2'], kind="linear", fill_value=np.NaN, bounds_error=False)(x_to_wall_m)
 
-    wrapper_output['n_H'] = interp1d(out['rwall_m']-out['xh'], out['nh'], kind="linear", fill_value=np.NaN, bounds_error=False)(x)
-    wrapper_output['n_H2'] = interp1d(out['rwall_m']-out['xh2'], out['nh2'], kind="linear", fill_value=np.NaN, bounds_error=False)(x)
+    wrapper_output['n_H'] = interp1d(out['rwall_m']-out['xh'], out['nh'], kind="linear", fill_value=np.NaN, bounds_error=False)(x_to_wall_m)
+    wrapper_output['n_H2'] = interp1d(out['rwall_m']-out['xh2'], out['nh2'], kind="linear", fill_value=np.NaN, bounds_error=False)(x_to_wall_m)
 
-    wrapper_output['source_atom'] = interp1d(out['rwall_m']-out['xh2'], out['sh'], kind="linear", fill_value=np.NaN, bounds_error=False)(x)
-    wrapper_output['source_ion'] = interp1d(out['rwall_m']-out['xh2'], out['sp'], kind="linear", fill_value=np.NaN, bounds_error=False)(x)
-    wrapper_output['Sion'] = interp1d(out['rwall_m']-out['xh'], out['Sion'], kind="linear", fill_value=np.NaN, bounds_error=False)(x)
+    wrapper_output['sh'] = interp1d(out['rwall_m']-out['xh2'], out['sh'], kind="linear", fill_value=np.NaN, bounds_error=False)(x_to_wall_m)
+    wrapper_output['sp'] = interp1d(out['rwall_m']-out['xh2'], out['sp'], kind="linear", fill_value=np.NaN, bounds_error=False)(x_to_wall_m)
+    wrapper_output['Sion'] = interp1d(out['rwall_m']-out['xh'], out['Sion'], kind="linear", fill_value=np.NaN, bounds_error=False)(x_to_wall_m)
 
-    wrapper_output['balmer'] = interp1d(out['rwall_m']-out['xh'], out['balmer'], kind="linear", fill_value=np.NaN, bounds_error=False)(x)
-    wrapper_output['lyman'] = interp1d(out['rwall_m']-out['xh'], out['lyman'], kind="linear", fill_value=np.NaN, bounds_error=False)(x)
+    wrapper_output['balmer'] = interp1d(out['rwall_m']-out['xh'], out['balmer'], kind="linear", fill_value=np.NaN, bounds_error=False)(x_to_wall_m)
+    wrapper_output['lyman'] = interp1d(out['rwall_m']-out['xh'], out['lyman'], kind="linear", fill_value=np.NaN, bounds_error=False)(x_to_wall_m)
 
-    wrapper_output['gammaxh'] = interp1d(out['rwall_m']-out['xh'], out['gammaxh'], kind="linear", fill_value=np.NaN, bounds_error=False)(x)
-    wrapper_output['gammaxh2'] = interp1d(out['rwall_m']-out['xh2'], out['gammaxh2'], kind="linear", fill_value=np.NaN, bounds_error=False)(x)
+    wrapper_output['gammaxh'] = interp1d(out['rwall_m']-out['xh'], out['gammaxh'], kind="linear", fill_value=np.NaN, bounds_error=False)(x_to_wall_m)
+    wrapper_output['gammaxh2'] = interp1d(out['rwall_m']-out['xh2'], out['gammaxh2'], kind="linear", fill_value=np.NaN, bounds_error=False)(x_to_wall_m)
 
-    wrapper_output['QH_total'] = interp1d(out['rwall_m']-out['xh'], out['QH_total'], kind="linear", fill_value=np.NaN, bounds_error=False)(x)
+    wrapper_output['QH_total'] = interp1d(out['rwall_m']-out['xh'], out['QH_total'], kind="linear", fill_value=np.NaN, bounds_error=False)(x_to_wall_m)
+    sep_i = np.searchsorted(wrapper_output['x'], wrapper_input['sep_m'])
+    rate_sion = cumtrapz(wrapper_output['Sion'], wrapper_output['x'], initial=0.0)
+    wrapper_output['Sion_core'] = rate_sion[sep_i]
+    wrapper_output['Sion_sol'] = rate_sion[-1]-rate_sion[sep_i]
 
     
 
@@ -835,50 +835,58 @@ def plot_overview_x(res):
     ax[0,0].plot(res["wrapper_input"]["x"], res["wrapper_input"]['Ti_eV'], color="gray", linestyle="-.", label="$T_i$")
     ax[0,0].plot(res["wrapper_output"]["x"], res["wrapper_output"]['T_H'], color="red", linestyle="-", label="$T_D$")
     ax[0,0].plot(res["wrapper_output"]["x"], res["wrapper_output"]['T_H2'], color="blue", linestyle="-", label="$T_{D2}$")
+    ax[0,0].set_ylabel("T [eV]")
 
     ax[0,1].set_title("Radiation")
     #ax[0,1].plot(res["out"]["rwall_m"]-res["kn1d_input"]["x"], res["kn1d_input"]['n'], color="gray", linestyle="--", label="$n_e$")
     #ax[0,1].plot(res["out"]["rwall_m"]-res["out"]["xh"], res["out"]['nh']*1e6, color="red", linestyle="-", label="$n_D$")
     #ax[0,1].plot(res["out"]["rwall_m"]-res["out"]["xh2"], res["out"]['nh2']*1e6, color="blue", linestyle="-", label="$n_{D2}$")
-    mask = res["wrapper_output"]["balmer"]<1e30
+    mask = res["wrapper_output"]["balmer"]<1e7
     x = res["wrapper_output"]["x"][mask]
     balmer = res["wrapper_output"]["balmer"][mask]
 
-    mask = res["wrapper_output"]["lyman"]<1e30
+    ax[0,1].plot(x, balmer, "-", color="magenta", label="balmer (JH)")
+
+    mask = res["wrapper_output"]["lyman"]<1e7
     x = res["wrapper_output"]["x"][mask]
     lyman = res["wrapper_output"]["lyman"][mask]
 
-    ax[0,1].plot(x, balmer, "-", color="magenta", label="balmer (JH)")
     ax[0,1].plot(x, lyman, "-", color="purple", label="lyman (JH)")
+    ax[0,1].set_ylabel("Rad [W m$^{-3}$]")
+    ax[0,1].set_yscale('log')
     #ax[0,1].plot(res["out"]["rwall_m"]-res["out"]["xh"], res["out"]["lyman"], "-", color="purple", label="lyman (JH)")
     #ax[1,0].set_xlim(res["out"]["rwall_m"]-np.max(res["out"]["xh"]),res["out"]["rwall_m"]-np.min(res["out"]["xh"]))
 
     ax[1,0].set_title("Source")
     #ax[1,0].plot(res["out"]["rwall_m"]-res["out"]["xh"], res["out"]['sion'], color="red", linestyle="-", label="Atomic ionization rate")
-    ax[1,0].plot(res["wrapper_output"]["x"], res["wrapper_output"]["source_atom"], color="red", label="Atomic source")
-    ax[1,0].plot(res["wrapper_output"]["x"], res["wrapper_output"]["source_ion"], color="blue", label="Ion source?")
-    ax[1,0].plot(res["wrapper_output"]["x"], res["wrapper_output"]["Sion"], color="green", label="Ion source")
+    ax[1,0].plot(res["wrapper_output"]["x"], res["wrapper_output"]["sh"], color="red", label="Atomic source (sh)")
+    ax[1,0].plot(res["wrapper_output"]["x"], res["wrapper_output"]["sp"], color="blue", label="Ion source (sp)")
+    ax[1,0].plot(res["wrapper_output"]["x"], res["wrapper_output"]["Sion"], color="green", label="Ion source (Sion)")
+    ax[1,0].plot(res["wrapper_input"]["wall_m"]-res["kn1d_H2"]["xh2"], res["kn1d_H2"]["sph2"], color="orange", label="Molecular source (sph2)")
     #ax[1,0].set_xlim(res["out"]["rwall_m"]-np.max(res["out"]["xh"]),res["out"]["rwall_m"]-np.min(res["out"]["xh"]))
+    ax[1,0].set_ylabel("Source [$m^{-3} s^{-1}$]")
 
     ax[1,1].set_title("log(Density)")
     ax[1,1].plot(res["wrapper_input"]["x"], res["wrapper_input"]['ne_m3'], color="gray", linestyle="--", label="$n_e$")
     ax[1,1].plot(res["wrapper_output"]["x"], res["wrapper_output"]['n_H'], color="red", linestyle="-", label="$n_D$")
     ax[1,1].plot(res["wrapper_output"]["x"], res["wrapper_output"]['n_H2'], color="blue", linestyle="-", label="$n_{D2}$")
     ax[1,1].set_yscale('log')
-    ax[1,1].set_ylim(max(1e10,min(np.min(res["wrapper_input"]['ne_m3']),
+    ax[1,1].set_ylabel("Density [$m^{-3}$]")
+    '''ax[1,1].set_ylim(max(1e10,min(np.min(res["wrapper_input"]['ne_m3']),
                         np.min(res["wrapper_output"]['n_H']),
                         np.min(res["wrapper_output"]['n_H2']))/2)
                     , max(np.max(res["wrapper_input"]['ne_m3']),
                         np.max(res["wrapper_output"]['n_H']),
-                        np.max(res["wrapper_output"]['n_H2']))*2)
+                        np.max(res["wrapper_output"]['n_H2']))*2)'''
 
 
     for a in ax.flatten():
         a.grid()
         a.legend()
-        a.set_xlim(res['wrapper_input']['sep_m']-res['wrapper_input']['innermost_x_m'], res['wrapper_input']['wall_m'])
+        a.set_xlim(res['wrapper_input']['innermost_x_m'], res['wrapper_input']['wall_m'])
         a.axvline(res['wrapper_input']['sep_m'], linestyle="--", color="gray")
         a.axvline(res['wrapper_input']['lim_m'], linestyle="--", color="gray")
+        a.set_xlabel("R [m]")
 
 '''
 END OF CUSTOM FUNCTIONS
